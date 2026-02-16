@@ -1,0 +1,129 @@
+╔════════════════════════════════════════════════════════════════╗
+║              SENTIENTCITY PRODUCTION - QUICK REFERENCE           ║
+╚════════════════════════════════════════════════════════════════╝
+
+📍 PROJECT LOCATION
+   /Users/abhijeetkumar/Desktop/SENTIENTCITY
+
+🚀 QUICK START (1 Command)
+   ./Start.sh
+
+🌐 ACCESS DASHBOARD
+   http://localhost:3000
+
+🔧 KEY SERVICES
+   ✓ Dashboard ........... http://localhost:3000 (Nginx + React/Vite)
+   ✓ Backend API ......... http://localhost:8000 (FastAPI)
+   ✓ Health Check ........ http://localhost:8000/api/v1/health
+   ✓ Kafka ............... localhost:9092
+   ✓ Redis ............... localhost:6379
+   ✓ Zookeeper ........... localhost:2181
+
+📋 USEFUL COMMANDS
+   
+   # Verify setup before running
+   ./verify_setup.sh
+   
+   # View all logs
+   docker-compose logs -f
+   
+   # View specific service logs
+   docker-compose logs -f dashboard
+   docker-compose logs -f backend
+   
+   # Stop all services
+   docker-compose down
+   
+   # Restart services
+   ./Start.sh
+   
+   # Rebuild dashboard
+   docker-compose build --no-cache dashboard
+   
+   # Development mode (dashboard)
+   cd dashboard/react_ui
+   npm install
+   npm run dev
+
+🛠️ TROUBLESHOOTING
+   
+   Dashboard blank page?
+   → curl http://localhost:3000/index.html
+   → docker-compose logs -f dashboard
+   → docker-compose down && ./Start.sh
+   
+   API calls failing?
+   → curl http://localhost:8000/api/v1/health
+   → docker-compose logs -f backend
+   
+   Docker won't start?
+   → docker ps
+   → Manually start Docker Desktop if needed
+   
+   Port already in use?
+   → lsof -ti:3000 | xargs kill -9
+   → Or change in docker-compose.yml: "3001:80"
+
+📚 DOCUMENTATION
+   
+   Main Startup ................... Start.sh
+   Setup Verification ............. verify_setup.sh
+   Quick Start ..................... QUICK_START.md
+   Vite Production Setup ........... VITE_PRODUCTION_SETUP.md
+   Complete Status ................. PRODUCTION_SETUP_COMPLETE.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FRAMEWORK DETAILS
+   Frontend: React 18 + Vite 5 (dashboard/react_ui/)
+   Build output: dist/ (optimized static files)
+   Web server: Nginx Alpine
+   Backend: FastAPI (port 8000)
+
+PRODUCTION SETUP
+   ✅ Multi-stage Docker build (Node → Nginx)
+   ✅ SPA routing configured
+   ✅ API proxying through Nginx
+   ✅ WebSocket support enabled
+   ✅ Asset caching optimized
+   ✅ Health checks enabled
+   ✅ Single startup command
+   ✅ Docker daemon auto-start (macOS)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONFIGURATION SUMMARY
+   Port Mapping ............... 3000:80 (localhost:3000 → Nginx 80)
+   Backend API URL ............ http://localhost:8000
+   Environment Variable ....... REACT_APP_API_URL (was NEXT_PUBLIC_API_URL)
+   Dockerfile Source ........... dashboard/react_ui/
+   Build Command .............. npm run build
+   Output Directory ........... dist/ (was /out for Next.js)
+   Asset Cache ................ 365 days (Vite content hashing)
+   HTML Cache ................. 1 hour (allows updates)
+   
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+WHAT TO DO NEXT
+
+   1. Run: ./Start.sh
+   
+   2. Wait for output:
+      ✓ Docker is installed
+      ✓ Docker daemon is running
+      ✓ Building services...
+      ✓ Health check passed
+      ✓ Dashboard ready: http://localhost:3000
+   
+   3. Open browser: http://localhost:3000
+   
+   4. If white screen appears:
+      docker-compose logs -f dashboard
+      (Check for build errors)
+
+═══════════════════════════════════════════════════════════════════
+
+Status: ✅ PRODUCTION READY
+Last Updated: February 7, 2025
+
+═══════════════════════════════════════════════════════════════════

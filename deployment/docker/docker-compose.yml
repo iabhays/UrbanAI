@@ -1,0 +1,279 @@
+version: "3.9"
+
+# SENTIENTCITY AI - Docker Compose Configuration
+# Production-grade multi-container deployment
+
+services:
+  # ============== Infrastructure ==============
+  
+  postgres:
+    image: postgres:16-alpine
+    container_name: sentient-postgres
+    environment:
+      POSTGRES_DB: sentientcity
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sentient-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: sentient-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - sentient-network
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: sentient-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+    networks:
+      - sentient-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: sentient-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "localhost:9092", "--list"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - sentient-network
+
+  # ============== Core Services ==============
+
+  api-gateway:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.service
+      args:
+        SERVICE_NAME: api-gateway
+    container_name: sentient-api-gateway
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_HOST=postgres
+      - REDIS_HOST=redis
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  edge-inference:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.inference
+    container_name: sentient-edge-inference
+    environment:
+      - ENVIRONMENT=production
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - INFERENCE_DEVICE=cuda:0
+    volumes:
+      - model_cache:/models
+    ports:
+      - "8001:8001"
+    depends_on:
+      kafka:
+        condition: service_healthy
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  tracking:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.service
+      args:
+        SERVICE_NAME: tracking
+    container_name: sentient-tracking
+    environment:
+      - ENVIRONMENT=production
+      - REDIS_HOST=redis
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+    ports:
+      - "8002:8002"
+    depends_on:
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  intelligence-engine:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.service
+      args:
+        SERVICE_NAME: intelligence-engine
+    container_name: sentient-intelligence
+    environment:
+      - ENVIRONMENT=production
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - REDIS_HOST=redis
+    ports:
+      - "8005:8005"
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  memory-service:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.service
+      args:
+        SERVICE_NAME: memory
+    container_name: sentient-memory
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_HOST=postgres
+      - REDIS_HOST=redis
+    ports:
+      - "8006:8006"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  explainability:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile.service
+      args:
+        SERVICE_NAME: explainability
+    container_name: sentient-explainability
+    environment:
+      - ENVIRONMENT=production
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - LLM_PROVIDER=${LLM_PROVIDER:-openai}
+      - LLM_API_KEY=${LLM_API_KEY}
+    ports:
+      - "8007:8007"
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  # ============== Dashboard ==============
+
+  dashboard:
+    build:
+      context: ../../dashboard
+      dockerfile: ../deployment/docker/Dockerfile.dashboard
+    container_name: sentient-dashboard
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api-gateway:8000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+    networks:
+      - sentient-network
+    restart: unless-stopped
+
+  # ============== Monitoring ==============
+
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    container_name: sentient-prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - sentient-network
+
+  grafana:
+    image: grafana/grafana:10.2.0
+    container_name: sentient-grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+    networks:
+      - sentient-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  zookeeper_data:
+  kafka_data:
+  model_cache:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  sentient-network:
+    driver: bridge

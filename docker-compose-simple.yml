@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Redis - Simple and no auth required
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: deployment/docker/Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+    depends_on:
+      - redis
+    volumes:
+      - ./configs:/app/configs
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./logs:/app/logs
+
+  # Dashboard
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: ../deployment/docker/Dockerfile.dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - backend
+
+volumes:
+  redis_data:

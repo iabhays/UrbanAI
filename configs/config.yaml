@@ -1,0 +1,199 @@
+# SENTIENTCITY AI Configuration File
+
+# System Configuration
+system:
+  name: "SENTIENTCITY AI"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+
+# Edge AI Configuration
+edge_ai:
+  model:
+    type: "yolov26"
+    weights_path: "models/yolov26.pt"
+    input_size: [640, 640]
+    conf_threshold: 0.5
+    iou_threshold: 0.45
+    device: "cuda:0"  # or "cpu"
+  
+  detection:
+    classes: [0]  # Person class for COCO
+    max_detections: 1000
+    enable_crowd_density: true
+    enable_behavior_embedding: true
+    enable_pose_fusion: true
+  
+  temporal:
+    buffer_size: 30  # frames
+    enable_temporal_features: true
+
+# Tracking Configuration
+tracking:
+  algorithm: "ocsort"  # or "deepsort"
+  max_age: 30
+  min_hits: 3
+  iou_threshold: 0.3
+  
+  reid:
+    enabled: true
+    model_path: "models/reid_model.pt"
+    feature_dim: 512
+    similarity_threshold: 0.7
+  
+  multi_camera:
+    enabled: true
+    camera_mapping: {}
+
+# Pose Extraction Configuration
+pose:
+  backend: "mediapipe"  # or "openpose"
+  model_complexity: 1
+  min_detection_confidence: 0.5
+  min_tracking_confidence: 0.5
+  
+  detection:
+    enable_fall_detection: true
+    enable_panic_detection: true
+    fall_threshold: 0.7
+    panic_threshold: 0.6
+
+# Streaming Configuration
+streaming:
+  kafka:
+    bootstrap_servers: "localhost:9092"
+    topics:
+      detections: "detections"
+      tracks: "tracks"
+      poses: "poses"
+      behaviors: "behaviors"
+      alerts: "alerts"
+    consumer_group: "sentient_city_group"
+    auto_offset_reset: "latest"
+  
+  redis:
+    host: "localhost"
+    port: 6379
+    db: 0
+    password: null
+    max_connections: 50
+    ttl: 3600  # seconds
+
+# Intelligence Layer Configuration
+intelligence:
+  behavior_model:
+    type: "transformer"
+    hidden_dim: 256
+    num_heads: 8
+    num_layers: 4
+    dropout: 0.1
+    model_path: "models/behavior_transformer.pt"
+  
+  memory_model:
+    type: "lstm"
+    hidden_dim: 128
+    num_layers: 2
+    model_path: "models/memory_lstm.pt"
+  
+  crowd_crush:
+    enabled: true
+    risk_threshold: 0.7
+    density_threshold: 0.8
+    movement_threshold: 0.6
+    lookback_window: 30  # frames
+  
+  anomaly_detection:
+    enabled: true
+    threshold: 0.75
+    window_size: 60
+  
+  accident_detection:
+    enabled: true
+    probability_threshold: 0.8
+    vehicle_classes: [2, 3, 5, 7]  # COCO vehicle classes
+
+# Memory Engine Configuration
+memory:
+  vector_db:
+    type: "faiss"
+    index_path: "data/faiss_index.bin"
+    dimension: 512
+    metric: "L2"  # or "IP" for inner product
+    index_type: "IVF_FLAT"  # or "HNSW", "FLAT"
+  
+  storage:
+    behavioral_history_ttl: 86400  # 24 hours
+    identity_embedding_ttl: 604800  # 7 days
+
+# Explainability Configuration
+explainability:
+  llm:
+    provider: "openai"  # or "anthropic", "local"
+    model: "gpt-4"
+    temperature: 0.7
+    max_tokens: 500
+    api_key_env: "OPENAI_API_KEY"
+  
+  alert_generation:
+    enabled: true
+    template_path: "configs/alert_templates.yaml"
+  
+  incident_summarization:
+    enabled: true
+    max_incidents: 100
+
+# Backend API Configuration
+backend:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+  reload: false
+  
+  cors:
+    enabled: true
+    origins: ["*"]
+  
+  authentication:
+    enabled: false
+    jwt_secret: "change-me-in-production"
+    jwt_algorithm: "HS256"
+    jwt_expiration_hours: 24
+  
+  websocket:
+    enabled: true
+    max_connections: 100
+    ping_interval: 20
+
+# Dashboard Configuration
+dashboard:
+  api_url: "http://localhost:8000"
+  websocket_url: "ws://localhost:8000/ws"
+  refresh_interval: 1000  # milliseconds
+  max_alerts: 1000
+
+# Camera Sources
+cameras:
+  - id: "camera_001"
+    source: "rtsp://localhost:8554/stream1"
+    location: "Main Square"
+    coordinates: [40.7128, -74.0060]
+    enabled: true
+  - id: "camera_002"
+    source: "rtsp://localhost:8554/stream2"
+    location: "Traffic Intersection"
+    coordinates: [40.7589, -73.9851]
+    enabled: true
+
+# Deployment Configuration
+deployment:
+  docker:
+    image_prefix: "sentientcity"
+    registry: ""
+  
+  gpu:
+    enabled: true
+    device_ids: [0]
+    tensorrt:
+      enabled: false
+      precision: "FP16"
+      workspace_size: 1073741824  # 1GB

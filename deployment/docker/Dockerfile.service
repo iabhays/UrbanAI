@@ -1,0 +1,61 @@
+# SENTIENTCITY AI - Python Service Dockerfile
+# Multi-stage build for optimized production images
+
+ARG PYTHON_VERSION=3.11
+ARG SERVICE_NAME=api-gateway
+
+# ============== Builder Stage ==============
+FROM python:${PYTHON_VERSION}-slim as builder
+
+WORKDIR /app
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+COPY pyproject.toml .
+RUN pip install --no-cache-dir hatch && \
+    pip wheel --no-cache-dir --wheel-dir /app/wheels -e .
+
+# ============== Runtime Stage ==============
+FROM python:${PYTHON_VERSION}-slim as runtime
+
+ARG SERVICE_NAME
+ENV SERVICE_NAME=${SERVICE_NAME}
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+WORKDIR /app
+
+# Create non-root user
+RUN groupadd -r sentient && useradd -r -g sentient sentient
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy wheels and install
+COPY --from=builder /app/wheels /wheels
+RUN pip install --no-cache-dir /wheels/*.whl && rm -rf /wheels
+
+# Copy application code
+COPY sentientcity/ ./sentientcity/
+COPY services/${SERVICE_NAME}/ ./services/${SERVICE_NAME}/
+COPY plugins/ ./plugins/
+COPY configs/ ./configs/
+
+# Set ownership
+RUN chown -R sentient:sentient /app
+
+USER sentient
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Default command
+CMD ["python", "-m", "uvicorn", "services.${SERVICE_NAME}.src.service:create_app", "--host", "0.0.0.0", "--port", "8000"]

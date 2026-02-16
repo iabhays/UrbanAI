@@ -1,0 +1,136 @@
+# Research Lab Configuration
+
+# Experiment Configuration
+experiments:
+  default_workspace: "experiments/"
+  checkpoint_dir: "checkpoints/"
+  log_dir: "logs/research/"
+  
+  # Experiment tracking
+  tracking:
+    enabled: true
+    backend: "local"  # or "wandb", "mlflow"
+    project_name: "sentientcity_research"
+  
+  # Hyperparameter search
+  hyperparameter_search:
+    enabled: false
+    method: "random"  # "random", "grid", "bayesian"
+    n_trials: 100
+    timeout_hours: 24
+
+# Dataset Configuration
+datasets:
+  registry_path: "data/datasets_registry.json"
+  cache_dir: "data/datasets/"
+  default_split:
+    train: 0.7
+    val: 0.15
+    test: 0.15
+  
+  # Data augmentation
+  augmentation:
+    enabled: true
+    config_path: "configs/augmentation_config.yaml"
+
+# Model Registry Configuration
+model_registry:
+  registry_path: "data/model_registry.json"
+  storage_path: "models/"
+  
+  # Model versioning
+  versioning:
+    enabled: true
+    auto_increment: true
+  
+  # Production promotion
+  promotion:
+    require_ab_test: true
+    min_accuracy_improvement: 0.01
+
+# Training Configuration
+training:
+  # Default training parameters
+  default:
+    batch_size: 16
+    num_epochs: 100
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    
+  # Multi-GPU training
+  distributed:
+    enabled: false
+    backend: "nccl"  # or "gloo"
+    world_size: 1
+  
+  # Mixed precision
+  mixed_precision:
+    enabled: true
+    dtype: "float16"  # or "bfloat16"
+  
+  # Gradient accumulation
+  gradient_accumulation:
+    enabled: false
+    steps: 1
+
+# Evaluation Configuration
+evaluation:
+  metrics:
+    - "mAP@0.5"
+    - "mAP@0.5:0.95"
+    - "crowd_density_mae"
+    - "behavior_embedding_cosine"
+  
+  # Evaluation frequency
+  eval_frequency:
+    epochs: 5
+    steps: null  # null for epoch-based
+  
+  # Test time augmentation
+  tta:
+    enabled: false
+    num_augmentations: 5
+
+# Ablation Studies
+ablation:
+  enabled: true
+  components:
+    - "backbone"
+    - "neck"
+    - "detection_head"
+    - "crowd_density_head"
+    - "behavior_embedding_head"
+    - "pose_fusion"
+    - "temporal_buffer"
+
+# Research Agents Configuration
+agents:
+  research_scientist:
+    enabled: true
+    experiment_proposal_rate: 0.1  # Proposals per day
+    focus_areas:
+      - "architecture"
+      - "multi_task_learning"
+  
+  mlops_engineer:
+    enabled: true
+    auto_deployment: false
+    monitoring_enabled: true
+  
+  edge_ai_engineer:
+    enabled: true
+    optimization_focus:
+      - "latency"
+      - "memory"
+      - "throughput"
+
+# Knowledge Base
+knowledge_base:
+  enabled: true
+  storage_path: "data/knowledge_base/"
+  experiment_notes_path: "docs/research_notes/"
+  
+  # Auto-documentation
+  auto_document:
+    enabled: true
+    format: "markdown"
