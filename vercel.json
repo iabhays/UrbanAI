@@ -1,11 +1,11 @@
 {
-  "buildCommand": "cd dashboard && npm run build",
-  "outputDirectory": "dashboard/.next",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
   "framework": "nextjs",
+  "regions": ["sfo1"],
   "env": {
     "NEXT_PUBLIC_API_URL": {
-      "description": "Backend API URL for production",
-      "value": "https://urbanai-api.railway.app"
+      "description": "Backend API URL for production"
     }
   }
 }
