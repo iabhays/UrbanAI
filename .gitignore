@@ -56,6 +56,10 @@ datasets/
 *.json
 *.csv
 
+# Deployment Config (NOT ignored)
+!vercel.json
+!Procfile
+
 # Logs
 logs/
 *.log
