@@ -1,6 +1,6 @@
-# 🚀 SENTIENTCITY Deployment Guide
+# 🚀 UrbanAI Deployment Guide
 
-Complete guide to deploy SENTIENTCITY dashboard and backend to the cloud for free.
+Complete guide to deploy UrbanAI dashboard and backend to the cloud for free.
 
 ---
 
@@ -36,8 +36,8 @@ Complete guide to deploy SENTIENTCITY dashboard and backend to the cloud for fre
 ```
 1. Go to https://vercel.com/new
 2. Click "Import Git Repository"
-3. Paste your SentientCity GitHub URL:
-   https://github.com/iabhays/SentientCity
+3. Paste your UrbanAI GitHub URL:
+   https://github.com/iabhays/UrbanAI
 4. Click "Continue"
 ```
 
@@ -45,7 +45,7 @@ Complete guide to deploy SENTIENTCITY dashboard and backend to the cloud for fre
 ```
 In the "Configure Project" section:
 
-Project Name: sentientcity-dashboard
+Project Name: urbanai-dashboard
 (or your preferred name)
 
 Root Directory: ./dashboard/react_ui
@@ -68,7 +68,7 @@ Environment Variables:
 ```
 1. Click "Deploy"
 2. Wait for deployment to complete (~2-3 minutes)
-3. You'll get a Vercel URL: https://sentientcity-xxx.vercel.app
+3. You'll get a Vercel URL: https://urbanai-xxx.vercel.app
 4. Note this URL - we'll add it to README
 ```
 
@@ -138,7 +138,7 @@ DASHBOARD_URL=https://sentientcity-xxx.vercel.app
 ```
 1. Railway automatically starts deployment
 2. Wait 5-10 minutes for completion
-3. You'll get a Railway URL: https://sentientcity-api-xxx.railway.app
+6. You'll get a Railway URL: https://urbanai-api-xxx.railway.app
 4. Note this URL for the README
 ```
 
@@ -147,7 +147,7 @@ DASHBOARD_URL=https://sentientcity-xxx.vercel.app
 Go back to Vercel:
 1. Project Settings → Environment Variables
 2. Update REACT_APP_API_URL:
-   Value: https://sentientcity-api-xxx.railway.app
+   Value: https://urbanai-api-xxx.railway.app
    (Use your actual Railway URL)
 3. Redeploy project (automatic)
 ```
@@ -177,14 +177,14 @@ Go back to Vercel:
 2. Click "+ New +"
 3. Select "Web Service"
 4. Choose "Deploy an existing repository"
-5. Select SentientCity repo
+5. Select UrbanAI repo
 6. Click "Connect"
 ```
 
 #### 3. Configure Service
 ```
 Service Details:
-- Name: sentientcity-api
+- Name: urbanai-api
 - Environment: Python 3 (or 3.10 if available)
 - Build Command: pip install -r requirements.txt
 - Start Command: uvicorn sentient_city.backend_api.main:app --host 0.0.0.0 --port $PORT
@@ -192,14 +192,14 @@ Service Details:
 
 Environment Variables:
 ENVIRONMENT=production
-DASHBOARD_URL=https://sentientcity-xxx.vercel.app
+DASHBOARD_URL=https://urbanai-xxx.vercel.app
 ```
 
 #### 4. Deploy
 ```
 1. Click "Create Web Service"
 2. Wait 10-15 minutes for deployment
-3. Get your Render URL: https://sentientcity-api.onrender.com
+3. Get your Render URL: https://urbanai-api.onrender.com
 4. Note this URL for updates
 ```
 
@@ -212,12 +212,12 @@ After deployment, update your README.md with:
 ```markdown
 ## 🌐 Live Demo
 
-**Frontend Dashboard**: https://sentientcity-xxx.vercel.app  
-**Backend API**: https://sentientcity-api-xxx.railway.app  
-**API Documentation**: https://sentientcity-api-xxx.railway.app/docs  
+**Frontend Dashboard**: https://urbanai-xxx.vercel.app  
+**Backend API**: https://urbanai-api-xxx.railway.app  
+**API Documentation**: https://urbanai-api-xxx.railway.app/docs  
 
 Try it live:
-- Dashboard: [Open Dashboard](https://sentientcity-xxx.vercel.app)
+- Dashboard: [Open Dashboard](https://urbanai-xxx.vercel.app)
 - API Docs: [View API](https://sentientcity-api-xxx.railway.app/docs)
 - Health Check: [API Status](https://sentientcity-api-xxx.railway.app/health)
 ```

@@ -1,10 +1,10 @@
-# 🌆 SENTIENTCITY AI — Multi-Agent Smart City Intelligence Platform
+# 🌆 UrbanAI — Multi-Agent Smart City Intelligence Platform
 
 **A Production-Grade, Research-Level AI Platform for Real-Time Smart City Operations**
 
-SENTIENTCITY AI is an advanced, distributed multi-agent intelligence system designed for comprehensive smart city operations. The platform delivers real-time monitoring, intelligent analysis, and predictive capabilities across multiple critical domains including crowd management, intelligent surveillance, defense infrastructure monitoring, disaster response, and autonomous traffic safety.
+UrbanAI is an advanced, distributed multi-agent intelligence system designed for comprehensive smart city operations. The platform delivers real-time monitoring, intelligent analysis, and predictive capabilities across multiple critical domains including crowd management, intelligent surveillance, defense infrastructure monitoring, disaster response, and autonomous traffic safety.
 
-Built with state-of-the-art computer vision (YOLOv26 research variant), distributed event streaming (Kafka), vector-based memory systems (FAISS), and explainable AI (LLM integration), SENTIENTCITY provides actionable intelligence and transparent decision-making for urban safety and resource optimization.
+Built with state-of-the-art computer vision (YOLOv26 research variant), distributed event streaming (Kafka), vector-based memory systems (FAISS), and explainable AI (LLM integration), UrbanAI provides actionable intelligence and transparent decision-making for urban safety and resource optimization.
 
 ---
 
@@ -14,12 +14,12 @@ Built with state-of-the-art computer vision (YOLOv26 research variant), distribu
 
 | Component | URL | Status |
 |-----------|-----|--------|
-| **Dashboard** | [sentientcity.vercel.app](https://sentientcity.vercel.app) | ✅ Live |
-| **API Documentation** | [api.sentientcity.app/docs](https://api.sentientcity.app/docs) | ✅ Live |
-| **Health Check** | [api.sentientcity.app/health](https://api.sentientcity.app/health) | ✅ Live |
+| **Dashboard** | [urbanai.vercel.app](https://urbanai.vercel.app) | ✅ Live |
+| **API Documentation** | [api.urbanai.app/docs](https://api.urbanai.app/docs) | ✅ Live |
+| **Health Check** | [api.urbanai.app/health](https://api.urbanai.app/health) | ✅ Live |
 
 **Quick Start - Try the Live Demo:**
-1. Open [Dashboard](https://sentientcity.vercel.app) in your browser
+1. Open [Dashboard](https://urbanai.vercel.app) in your browser
 2. Connect to live camera feed
 3. Watch real-time detection and analysis
 4. Explore alerts and analytics
@@ -880,18 +880,18 @@ Deploy SENTIENTCITY to the cloud with zero cost using free tiers:
 
 ## 🆘 Support & Resources
 
-- **Live Dashboard**: https://sentientcity.vercel.app
+- **Live Dashboard**: https://urbanai.vercel.app
 - **API Documentation**: [API Docs](./DEPLOYMENT_GUIDE.md#-part-2-deploy-backend-to-railwayapp)
 - **Deployment Help**: [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
-- **GitHub Issues**: https://github.com/iabhays/SentientCity/issues
-- **Discussions**: https://github.com/iabhays/SentientCity/discussions
+- **GitHub Issues**: https://github.com/iabhays/UrbanAI/issues
+- **Discussions**: https://github.com/iabhays/UrbanAI/discussions
 - **Email**: abhays2103@gmail.com
 
 ---
 
 **Developer**: Abhijeet Kumar  
 **Email**: abhays2103@gmail.com  
-**GitHub**: https://github.com/iabhays/SentientCity  
+**GitHub**: https://github.com/iabhays/UrbanAI  
 
 **Last Updated**: February 16, 2026  
 **Version**: 1.0.0  
