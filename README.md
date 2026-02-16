@@ -8,7 +8,27 @@ Built with state-of-the-art computer vision (YOLOv26 research variant), distribu
 
 ---
 
-## 🏗️ System Architecture Overview
+## � Live Demo (Try It Now!)
+
+**Status**: 🟢 Online & Ready
+
+| Component | URL | Status |
+|-----------|-----|--------|
+| **Dashboard** | [sentientcity.vercel.app](https://sentientcity.vercel.app) | ✅ Live |
+| **API Documentation** | [api.sentientcity.app/docs](https://api.sentientcity.app/docs) | ✅ Live |
+| **Health Check** | [api.sentientcity.app/health](https://api.sentientcity.app/health) | ✅ Live |
+
+**Quick Start - Try the Live Demo:**
+1. Open [Dashboard](https://sentientcity.vercel.app) in your browser
+2. Connect to live camera feed
+3. Watch real-time detection and analysis
+4. Explore alerts and analytics
+
+**Deployment Instructions**: See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) to deploy your own instance.
+
+---
+
+## �🏗️ System Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -799,9 +819,70 @@ SentientCity/
 
 ---
 
+## 🚀 Cloud Deployment (Free Tier)
+
+Deploy SENTIENTCITY to the cloud with zero cost using free tiers:
+
+### Frontend Deployment (Vercel)
+```bash
+# One-click deployment to Vercel (free tier)
+1. Fork the repository on GitHub
+2. Go to https://vercel.com/new
+3. Import your GitHub repository
+4. Select root directory: ./dashboard/react_ui
+5. Deploy!
+
+⏱️ Takes ~2-3 minutes
+✅ Automatic deployments on git push
+📊 Built-in analytics and monitoring
+🌐 Global CDN included
+```
+
+### Backend Deployment (Railway or Render)
+```bash
+# Option A: Railway.app (Recommended)
+1. Go to https://railway.app
+2. Click "Deploy on Railway"
+3. Select your GitHub repository
+4. Set Python version to 3.10
+5. Deploy!
+
+⏱️ Takes ~10 minutes
+✅ Auto-scaling on free tier
+💾 $5/month free credits
+🔄 Automatic deployments on git push
+
+# Option B: Render.com
+1. Go to https://render.com
+2. Create new Web Service
+3. Connect GitHub repository
+4. Set start command: uvicorn sentient_city.backend_api.main:app --host 0.0.0.0 --port $PORT
+5. Deploy!
+
+⏱️ Takes ~15 minutes
+✅ Free tier with limitations
+🔄 Auto-sleep after inactivity
+📊 Simple deployment process
+```
+
+**📖 Full Deployment Guide**: See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
+
+**Key Features of Free Deployment:**
+- ✅ No credit card required
+- ✅ No cost (free tier)
+- ✅ Automatic HTTPS/SSL
+- ✅ CDN for global access
+- ✅ Automatic deployments on git push
+- ✅ Built-in monitoring & analytics
+- ✅ Easy scaling if needed
+
+---
+
 ## 🆘 Support & Resources
 
-- **API Documentation**: http://localhost:8000/docs
+- **Live Dashboard**: https://sentientcity.vercel.app
+- **API Documentation**: [API Docs](./DEPLOYMENT_GUIDE.md#-part-2-deploy-backend-to-railwayapp)
+- **Deployment Help**: [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
 - **GitHub Issues**: https://github.com/iabhays/SentientCity/issues
 - **Discussions**: https://github.com/iabhays/SentientCity/discussions
 - **Email**: abhays2103@gmail.com
@@ -815,3 +896,4 @@ SentientCity/
 **Last Updated**: February 16, 2026  
 **Version**: 1.0.0  
 **Status**: Production Ready ✅
+

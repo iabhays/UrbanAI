@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: sentientcity-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn sentient_city.backend_api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+      - key: ENVIRONMENT
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sentientcity-db
+          property: connectionString
+      - key: REDIS_URL
+        value: redis://localhost:6379
+      - key: KAFKA_BOOTSTRAP_SERVERS
+        value: localhost:9092
+
+databases:
+  - name: sentientcity-db
+    databaseName: sentientcity
+    user: postgres
