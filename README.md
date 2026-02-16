@@ -174,12 +174,12 @@ Built with state-of-the-art computer vision (YOLOv26 research variant), distribu
 #### Step 1: Clone the Repository
 ```bash
 # Using SSH (requires GitHub SSH key setup)
-git clone git@github.com:iabhays/SentientCity.git
-cd SentientCity
+git clone git@github.com:iabhays/UrbanAI.git
+cd UrbanAI
 
 # OR using HTTPS (asks for token)
-git clone https://github.com/iabhays/SentientCity.git
-cd SentientCity
+git clone https://github.com/iabhays/UrbanAI.git
+cd UrbanAI
 ```
 
 #### Step 2: Create Python Virtual Environment
@@ -317,10 +317,10 @@ docker-compose up -d
 docker-compose ps
 
 # Expected output:
-# NAME                      STATUS
-# sentientcity-kafka-1      Up 2 minutes
-# sentientcity-redis-1      Up 2 minutes
-# sentientcity-postgres-1   Up 2 minutes
+# NAME            STATUS
+# kafka-1         Up 2 minutes
+# redis-1         Up 2 minutes
+# postgres-1      Up 2 minutes
 
 # View service logs
 docker-compose logs -f kafka    # View Kafka logs
@@ -487,7 +487,7 @@ kafka-topics.sh --create \
   - Additional exit activation
 
 **Real-World Scenario: Concert Venue**
-> During a sold-out concert with 10,000 attendees, SENTIENTCITY monitors crowd density in real-time across the venue. When a section reaches 6.5 persons/m², it automatically:
+> During a sold-out concert with 10,000 attendees, UrbanAI monitors crowd density in real-time across the venue. When a section reaches 6.5 persons/m², it automatically:
 > 1. Alerts venue management (yellow status)
 > 2. Suggests reducing entry rate via Gate 2
 > 3. Monitors that section continuously
@@ -509,7 +509,7 @@ kafka-topics.sh --create \
 - **Trajectory Analysis**: Predicts where person will go next
 
 **Real-World Scenario: Airport Security**
-> A person enters the airport at Gate A. SENTIENTCITY:
+> A person enters the airport at Gate A. UrbanAI:
 > 1. Detects and tracks them across 15 cameras
 > 2. Notes they linger near exit for 8 minutes (vs normal 2 min) → alerts security
 > 3. When they leave Gate A without boarding, the system recognizes them re-entering from restroom
@@ -531,7 +531,7 @@ kafka-topics.sh --create \
 - **Guard Coordination**: Automatic dispatch notifications to nearest security team
 
 **Real-World Scenario: Armory After Hours**
-> A person attempts to enter a restricted armory area at 2 AM. SENTIENTCITY immediately:
+> A person attempts to enter a restricted armory area at 2 AM. UrbanAI immediately:
 > 1. Detects unauthorized access attempt
 > 2. Identifies the person (face recognition + body features)
 > 3. Alerts nearest security guard with live 360° video
@@ -560,7 +560,7 @@ kafka-topics.sh --create \
   - Building occupants (evacuation orders)
 
 **Real-World Scenario: Office Building Fire**
-> A fire breaks out on Floor 7 of an office building. SENTIENTCITY:
+> A fire breaks out on Floor 7 of an office building. UrbanAI:
 > 1. Detects flames/smoke within 30 seconds
 > 2. Automatically calls emergency services with GPS, floor, exact location
 > 3. Initiates building evacuation alerts (audible + SMS + app pushes)
@@ -592,7 +592,7 @@ kafka-topics.sh --create \
   - Automatic insurance claim initiation
 
 **Real-World Scenario: Highway Multi-Vehicle Accident**
-> Three vehicles collide on a busy 6-lane highway during heavy traffic. SENTIENTCITY:
+> Three vehicles collide on a busy 6-lane highway during heavy traffic. UrbanAI:
 > 1. Detects collision within 2 seconds
 > 2. Automatically records 360° video evidence (for insurance)
 > 3. Alerts traffic management to disable affected lanes
@@ -628,7 +628,7 @@ kafka-topics.sh --create \
 - **Temporal Pattern Learning**: Learns normal patterns for each location/time
 
 **Real-World Scenario: Airport Security Threat**
-> At an airport, SENTIENTCITY identifies a person exhibiting surveillance behavior:
+> At an airport, UrbanAI identifies a person exhibiting surveillance behavior:
 > 1. Detects repeated checking of exits (>5 times in 10 minutes)
 > 2. Notices timing of security route patterns
 > 3. Observes photography of security procedures
@@ -821,7 +821,7 @@ SentientCity/
 
 ## 🚀 Cloud Deployment (Free Tier)
 
-Deploy SENTIENTCITY to the cloud with zero cost using free tiers:
+Deploy UrbanAI to the cloud with zero cost using free tiers:
 
 ### Frontend Deployment (Vercel)
 ```bash
