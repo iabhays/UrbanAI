@@ -20,12 +20,12 @@ import time
 from dataclasses import dataclass
 from loguru import logger
 
-# Add sentient_city to path
+# Add urbanai to path
 import sys
 sys.path.append(str(Path(__file__).parent.parent))
 
-from sentient_city.perception.pipeline import PerceptionPipeline
-from sentient_city.perception.tracking import OCSortTracker
+from urbanai.perception.pipeline import PerceptionPipeline
+from urbanai.perception.tracking import OCSortTracker
 
 
 @dataclass

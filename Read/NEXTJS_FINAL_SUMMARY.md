@@ -1,4 +1,4 @@
-# ✅ SENTIENTCITY Next.js 14 Production Setup - ALL CHANGES APPLIED
+# ✅ UrbanAI Next.js 14 Production Setup - ALL CHANGES APPLIED
 
 ## What Was Fixed
 
@@ -118,7 +118,7 @@ Browser: http://localhost:3000
 **Everything is configured. Run this:**
 
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 ./Start.sh
 ```
 
@@ -153,7 +153,7 @@ Created 3 comprehensive guides:
 ## File Locations
 
 ```
-SENTIENTCITY/
+UrbanAI/
 ├── Start.sh (executable - runs everything)
 ├── docker-compose.yml (FIXED)
 ├── dashboard/

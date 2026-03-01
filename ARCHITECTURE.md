@@ -1,8 +1,8 @@
-# SENTIENTCITY AI — Production Architecture Documentation
+# UrbanAI AI — Production Architecture Documentation
 
 ## Executive Summary
 
-SENTIENTCITY AI is a production-grade, enterprise-level multi-agent intelligence platform designed for smart city operations, defense monitoring, and public safety infrastructure. The system provides real-time monitoring, analysis, and prediction capabilities across multiple domains with enterprise-grade security, scalability, and reliability.
+UrbanAI AI is a production-grade, enterprise-level multi-agent intelligence platform designed for smart city operations, defense monitoring, and public safety infrastructure. The system provides real-time monitoring, analysis, and prediction capabilities across multiple domains with enterprise-grade security, scalability, and reliability.
 
 ---
 
@@ -526,7 +526,7 @@ Storage/Transmission
 
 ## Conclusion
 
-SENTIENTCITY AI is architected as a production-grade, enterprise-level platform with:
+UrbanAI AI is architected as a production-grade, enterprise-level platform with:
 
 - **Modular Design**: Extensible and maintainable
 - **Scalability**: Horizontal and vertical scaling

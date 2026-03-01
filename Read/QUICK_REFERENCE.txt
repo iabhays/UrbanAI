@@ -1,9 +1,9 @@
 ╔════════════════════════════════════════════════════════════════╗
-║              SENTIENTCITY PRODUCTION - QUICK REFERENCE           ║
+║              UrbanAI PRODUCTION - QUICK REFERENCE           ║
 ╚════════════════════════════════════════════════════════════════╝
 
 📍 PROJECT LOCATION
-   /Users/abhijeetkumar/Desktop/SENTIENTCITY
+   /Users/abhijeetkumar/Desktop/UrbanAI
 
 🚀 QUICK START (1 Command)
    ./Start.sh

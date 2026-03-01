@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - YOLOv26 Detection Head
+UrbanAI AI - YOLOv26 Detection Head
 Multi-scale anchor-free detection head
 """
 

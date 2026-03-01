@@ -1,8 +1,8 @@
-# SENTIENTCITY AI - System Architecture
+# UrbanAI AI - System Architecture
 
 ## Executive Overview
 
-SENTIENTCITY AI is an autonomous multi-agent smart city intelligence system designed for real-time surveillance, threat detection, crowd management, and emergency response. The platform implements a distributed microservices architecture with edge-to-cloud intelligence orchestration.
+UrbanAI AI is an autonomous multi-agent smart city intelligence system designed for real-time surveillance, threat detection, crowd management, and emergency response. The platform implements a distributed microservices architecture with edge-to-cloud intelligence orchestration.
 
 ## Architecture Principles
 

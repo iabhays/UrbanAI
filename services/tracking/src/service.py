@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - Tracking Service
+UrbanAI AI - Tracking Service
 Multi-object tracking and re-identification
 """
 
@@ -14,14 +14,14 @@ import numpy as np
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from sentientcity.core.logging import get_logger
-from sentientcity.core.service import (
+from urbanai_core.core.logging import get_logger
+from urbanai_core.core.service import (
     BaseService,
     KafkaConsumerMixin,
     KafkaProducerMixin,
     RedisMixin,
 )
-from sentientcity.schemas.events import (
+from urbanai_core.schemas.events import (
     BoundingBox,
     DetectionEvent,
     TrackEvent,
@@ -341,7 +341,7 @@ class TrackingService(BaseService, KafkaConsumerMixin, KafkaProducerMixin, Redis
 
     async def startup(self) -> None:
         """Initialize service."""
-        await self.start_consumer(["sentient.detections"])
+        await self.start_consumer(["urbanai.detections"])
         await self.start_producer()
         await self.connect_redis()
         
@@ -441,7 +441,7 @@ class TrackingService(BaseService, KafkaConsumerMixin, KafkaProducerMixin, Redis
         )
         
         await self.publish(
-            "sentient.tracks",
+            "urbanai.tracks",
             event.model_dump_json().encode(),
             key=camera_id.encode(),
         )

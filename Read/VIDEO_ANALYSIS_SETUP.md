@@ -1,8 +1,8 @@
-# 🎬 SENTIENTCITY Video Analysis - Setup Complete
+# 🎬 UrbanAI Video Analysis - Setup Complete
 
 ## ✅ What's Ready
 
-You now have **6 demo videos** integrated into your SENTIENTCITY dashboard with **complete isolation** from production camera sources.
+You now have **6 demo videos** integrated into your UrbanAI dashboard with **complete isolation** from production camera sources.
 
 ### Demo Video Files Available
 ```
@@ -21,7 +21,7 @@ datasets/raw/
 
 ### 1️⃣ Start Services
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 ./Start.sh
 ```
 
@@ -48,7 +48,7 @@ http://localhost:3000
 New endpoint: `/api/v1/videos/*`
 
 **Files created:**
-- ✅ `sentient_city/backend_api/fastapi_server/routes/videos.py` (200 lines)
+- ✅ `urbanai/backend_api/fastapi_server/routes/videos.py` (200 lines)
   - List videos from `datasets/raw/`
   - Simulate analysis
   - Track status independently
@@ -68,8 +68,8 @@ New endpoint: `/api/v1/videos/*`
 - ✅ `DEMO_VS_PRODUCTION.md` (Complete architecture guide)
 
 **Files updated:**
-- ✅ `sentient_city/backend_api/fastapi_server/main.py` (import videos router)
-- ✅ `sentient_city/backend_api/fastapi_server/routes/__init__.py` (export videos)
+- ✅ `urbanai/backend_api/fastapi_server/main.py` (import videos router)
+- ✅ `urbanai/backend_api/fastapi_server/routes/__init__.py` (export videos)
 - ✅ `dashboard/react_ui/src/components/layout/AdvancedCommandCenterLayout.tsx` (import VideoAnalysisPanel)
 - ✅ `dashboard/react_ui/src/components/navigation/CommandModulesDropdown.tsx` (add Videos option)
 
@@ -159,7 +159,7 @@ python scripts/run_pipeline.py --camera "rtsp://..." &
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                   SENTIENTCITY DASHBOARD                    │
+│                   UrbanAI DASHBOARD                    │
 │                    http://localhost:3000                    │
 └────────────────────┬────────────────────────────────────────┘
                      │
@@ -190,9 +190,9 @@ python scripts/run_pipeline.py --camera "rtsp://..." &
 
 ### New Files Added
 ```
-SENTIENTCITY/
+UrbanAI/
 ├── DEMO_VS_PRODUCTION.md                          # Architecture guide
-├── sentient_city/backend_api/fastapi_server/
+├── urbanai/backend_api/fastapi_server/
 │   ├── routes/
 │   │   ├── videos.py                              # NEW - Video API
 │   │   └── __init__.py                            # UPDATED
@@ -215,7 +215,7 @@ SENTIENTCITY/
 ### Add More Demo Videos
 Simply drop files in `datasets/raw/`:
 ```bash
-cp your_video.mp4 /Users/abhijeetkumar/Desktop/SENTIENTCITY/datasets/raw/
+cp your_video.mp4 /Users/abhijeetkumar/Desktop/UrbanAI/datasets/raw/
 ```
 
 Automatically appears in dashboard! ✨
@@ -279,7 +279,7 @@ curl http://localhost:8000/api/v1/videos/video1/results
 ### Videos not showing up
 ```bash
 # 1. Check files exist
-ls -la /Users/abhijeetkumar/Desktop/SENTIENTCITY/datasets/raw/
+ls -la /Users/abhijeetkumar/Desktop/UrbanAI/datasets/raw/
 
 # 2. Check file formats (.mp4, .avi, .mov, .mkv)
 

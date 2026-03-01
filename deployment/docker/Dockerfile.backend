@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 8000
 
 # Run application
-CMD ["python", "-m", "sentient_city.backend_api.fastapi_server.main"]
+CMD ["python", "-m", "urbanai.backend_api.fastapi_server.main"]

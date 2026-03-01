@@ -1,4 +1,4 @@
-# SENTIENTCITY Video Analysis - Demo vs Production
+# UrbanAI Video Analysis - Demo vs Production
 
 ## 🎯 Architecture Overview
 
@@ -26,7 +26,7 @@ The system has **two completely independent analysis flows**:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    SENTIENTCITY SYSTEM                       │
+│                    UrbanAI SYSTEM                       │
 └─────────────────────────────────────────────────────────────┘
 
 ┌──────────────────────────┐      ┌──────────────────────────┐
@@ -159,7 +159,7 @@ python scripts/run_pipeline.py  # Uses config.yaml
 
 Add your test videos here:
 ```
-SENTIENTCITY/
+UrbanAI/
 └── datasets/
     └── raw/
         ├── video1.mp4

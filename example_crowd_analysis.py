@@ -20,7 +20,7 @@ import time
 from datetime import datetime
 from loguru import logger
 
-from sentient_city.perception.crowd_analysis import (
+from urbanai.perception.crowd_analysis import (
     CrowdAnalysisSystem,
     SystemConfig,
     AlertConfig,

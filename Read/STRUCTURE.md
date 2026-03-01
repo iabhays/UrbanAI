@@ -1,9 +1,9 @@
-# SENTIENTCITY AI Project Structure
+# UrbanAI AI Project Structure
 
 ## Directory Structure
 
 ```
-sentient_city/
+urbanai/
 │
 ├── edge_ai/
 │   ├── yolov26_research/          # YOLOv26 research variant
@@ -172,28 +172,28 @@ tests/                               # Test suite
 
 ```python
 # Edge AI
-from sentient_city.edge_ai.yolov26_research import YOLOv26Detector
-from sentient_city.edge_ai.edge_inference_runner import EdgeDetector
-from sentient_city.edge_ai.pose_extraction import PoseDetector
-from sentient_city.edge_ai.tracking_engine import OCSortTracker
+from urbanai.edge_ai.yolov26_research import YOLOv26Detector
+from urbanai.edge_ai.edge_inference_runner import EdgeDetector
+from urbanai.edge_ai.pose_extraction import PoseDetector
+from urbanai.edge_ai.tracking_engine import OCSortTracker
 
 # Streaming
-from sentient_city.streaming.kafka_producer import KafkaProducer
-from sentient_city.streaming.event_router import RedisCache
+from urbanai.streaming.kafka_producer import KafkaProducer
+from urbanai.streaming.event_router import RedisCache
 
 # Intelligence
-from sentient_city.intelligence.behavior_models import BehaviorTransformer
-from sentient_city.intelligence.crowd_prediction import CrowdCrushPredictor
-from sentient_city.intelligence.risk_engine import RiskEngine
+from urbanai.intelligence.behavior_models import BehaviorTransformer
+from urbanai.intelligence.crowd_prediction import CrowdCrushPredictor
+from urbanai.intelligence.risk_engine import RiskEngine
 
 # Memory
-from sentient_city.memory_engine.vector_store import VectorDatabase
+from urbanai.memory_engine.vector_store import VectorDatabase
 
 # Explainability
-from sentient_city.explainability.llm_reasoner import LLMReasoner
+from urbanai.explainability.llm_reasoner import LLMReasoner
 
 # Backend
-from sentient_city.backend_api.fastapi_server import app
+from urbanai.backend_api.fastapi_server import app
 ```
 
 ## Benefits of This Structure

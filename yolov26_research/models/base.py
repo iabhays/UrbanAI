@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - YOLOv26 Base Model
+UrbanAI - YOLOv26 Base Model
 Research-grade multi-head detection architecture
 """
 

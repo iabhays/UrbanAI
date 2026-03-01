@@ -1,4 +1,4 @@
-# SENTIENTCITY AI - Python Service Dockerfile
+# UrbanAI AI - Python Service Dockerfile
 # Multi-stage build for optimized production images
 
 ARG PYTHON_VERSION=3.11
@@ -31,7 +31,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 WORKDIR /app
 
 # Create non-root user
-RUN groupadd -r sentient && useradd -r -g sentient sentient
+RUN groupadd -r urbanai && useradd -r -g urbanai urbanai
 
 # Install runtime dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -43,15 +43,15 @@ COPY --from=builder /app/wheels /wheels
 RUN pip install --no-cache-dir /wheels/*.whl && rm -rf /wheels
 
 # Copy application code
-COPY sentientcity/ ./sentientcity/
+COPY urbanai_core/ ./urbanai_core/
 COPY services/${SERVICE_NAME}/ ./services/${SERVICE_NAME}/
 COPY plugins/ ./plugins/
 COPY configs/ ./configs/
 
 # Set ownership
-RUN chown -R sentient:sentient /app
+RUN chown -R urbanai:urbanai /app
 
-USER sentient
+USER urbanai
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \

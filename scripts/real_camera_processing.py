@@ -23,13 +23,13 @@ from dataclasses import dataclass, asdict
 from loguru import logger
 import argparse
 
-# Add sentient_city to path
+# Add urbanai to path
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from sentient_city.perception.pipeline import PerceptionPipeline
-from sentient_city.perception.tracking import OCSortTracker
+from urbanai.perception.pipeline import PerceptionPipeline
+from urbanai.perception.tracking import OCSortTracker
 
 
 @dataclass

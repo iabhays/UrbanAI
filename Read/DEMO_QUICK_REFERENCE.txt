@@ -1,5 +1,5 @@
 ╔════════════════════════════════════════════════════════════════════════════╗
-║           SENTIENTCITY - DEMO VIDEOS vs PRODUCTION CAMERAS                  ║
+║           UrbanAI - DEMO VIDEOS vs PRODUCTION CAMERAS                  ║
 ║                       QUICK REFERENCE CARD                                   ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
@@ -51,7 +51,7 @@
 └─────────────────────────────────────────────────────────────────────────────┘
 
 Step 1: Start Services
-  $ cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+  $ cd /Users/abhijeetkumar/Desktop/UrbanAI
   $ ./Start.sh
   ✓ Kafka, Redis, Backend running
 
@@ -130,7 +130,7 @@ Result: ✅ ZERO CROSS-CONTAMINATION
 └─────────────────────────────────────────────────────────────────────────────┘
 
 Demo Videos:
-  SENTIENTCITY/datasets/raw/
+  UrbanAI/datasets/raw/
   ├── video1.mp4
   ├── video2.mp4
   ├── video3.mp4
@@ -139,7 +139,7 @@ Demo Videos:
   └── video6.mp4
 
 Backend API (Demo):
-  sentient_city/backend_api/fastapi_server/routes/
+  urbanai/backend_api/fastapi_server/routes/
   └── videos.py (NEW - Isolated demo logic)
 
 Frontend (Demo):
@@ -149,7 +149,7 @@ Frontend (Demo):
 
 Production Pipeline:
   scripts/run_pipeline.py
-  sentient_city/pipeline.py
+  urbanai/pipeline.py
   configs/config.yaml
 
 ┌─────────────────────────────────────────────────────────────────────────────┐

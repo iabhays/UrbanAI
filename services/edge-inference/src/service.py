@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - Edge Inference Service
+UrbanAI AI - Edge Inference Service
 Real-time video frame processing at edge devices
 """
 
@@ -12,10 +12,10 @@ import torch
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-from sentientcity.core.logging import get_logger
-from sentientcity.core.service import BaseService, KafkaProducerMixin
-from sentientcity.core.settings import get_settings
-from sentientcity.schemas.events import (
+from urbanai_core.core.logging import get_logger
+from urbanai_core.core.service import BaseService, KafkaProducerMixin
+from urbanai_core.core.settings import get_settings
+from urbanai_core.schemas.events import (
     BoundingBox,
     Detection,
     DetectionEvent,
@@ -280,7 +280,7 @@ class EdgeInferenceService(BaseService, KafkaProducerMixin):
         )
         
         await self.publish(
-            "sentient.detections",
+            "urbanai.detections",
             event.model_dump_json().encode(),
             key=camera_id.encode(),
         )

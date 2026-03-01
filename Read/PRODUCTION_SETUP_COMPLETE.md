@@ -1,8 +1,8 @@
-# SENTIENTCITY Production Setup - COMPLETE ✅
+# UrbanAI Production Setup - COMPLETE ✅
 
 ## Summary
 
-The SENTIENTCITY AI platform has been fully configured for production deployment using Docker on macOS. The dashboard is a **React application using Vite** (not Next.js), and all configurations have been corrected to support this framework.
+The UrbanAI AI platform has been fully configured for production deployment using Docker on macOS. The dashboard is a **React application using Vite** (not Next.js), and all configurations have been corrected to support this framework.
 
 ---
 
@@ -250,7 +250,7 @@ Response returned to browser
 
 ### Get Started
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 
 # Verify everything is configured correctly
 ./verify_setup.sh
@@ -354,7 +354,7 @@ npm run dev  # Opens http://localhost:3000 with Vite dev server
 
 ## Summary
 
-SENTIENTCITY is ready for production deployment. All configurations have been:
+UrbanAI is ready for production deployment. All configurations have been:
 - ✅ Audited and verified
 - ✅ Corrected for Vite React framework
 - ✅ Tested with verification script

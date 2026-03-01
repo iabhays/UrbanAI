@@ -683,7 +683,7 @@ source venv/bin/activate
 pytest tests/ -v
 
 # Run tests with coverage report
-pytest tests/ --cov=sentient_city --cov-report=html
+pytest tests/ --cov=urbanai --cov-report=html
 # Open htmlcov/index.html to see coverage
 
 # Run specific test file
@@ -699,13 +699,13 @@ pytest tests/ -v -s
 ### Code Quality Checks
 ```bash
 # Format code with Black (auto-fixes style)
-black sentient_city/ tests/ scripts/
+black urbanai/ tests/ scripts/
 
 # Check code style with Flake8
-flake8 sentient_city/ tests/ --max-line-length=100
+flake8 urbanai/ tests/ --max-line-length=100
 
 # Type checking with MyPy
-mypy sentient_city/
+mypy urbanai/
 
 # Combined check
 make lint
@@ -733,8 +733,8 @@ python scripts/evaluate_model.py \
 ## 📁 Complete Project Structure
 
 ```
-SentientCity/
-├── sentient_city/                    # Main Python package
+UrbanAI/
+├── urbanai/                    # Main Python package
 │   ├── __init__.py
 │   ├── pipeline.py                   # Core processing pipeline
 │   ├── edge_ai/                      # Edge AI models
@@ -856,7 +856,7 @@ Deploy UrbanAI to the cloud with zero cost using free tiers:
 1. Go to https://render.com
 2. Create new Web Service
 3. Connect GitHub repository
-4. Set start command: uvicorn sentient_city.backend_api.main:app --host 0.0.0.0 --port $PORT
+4. Set start command: uvicorn urbanai.backend_api.main:app --host 0.0.0.0 --port $PORT
 5. Deploy!
 
 ⏱️ Takes ~15 minutes

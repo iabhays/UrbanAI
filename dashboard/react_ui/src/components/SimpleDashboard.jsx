@@ -25,7 +25,7 @@ const SimpleDashboard = () => {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <h1 style={{ color: '#00ffff', fontSize: '18px', margin: 0 }}>
-            SENTIENTCITY AI COMMAND CENTER
+            UrbanAI AI COMMAND CENTER
           </h1>
           <div style={{ 
             width: '10px', 

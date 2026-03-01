@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - YOLOv26 Behavior Embedding Head
+UrbanAI AI - YOLOv26 Behavior Embedding Head
 Generates embeddings for behavior understanding
 """
 

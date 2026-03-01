@@ -17,7 +17,7 @@ function App() {
       fontFamily: 'monospace'
     }}>
       <div style={{ textAlign: 'center' }}>
-        <h1>SENTIENTCITY AI</h1>
+        <h1>UrbanAI AI</h1>
         <p>Command Center Interface</p>
         <p style={{ fontSize: '14px', marginTop: '20px', color: connected ? '#0f0' : '#f00' }}>
           WebSocket: {connected ? 'Connected' : 'Disconnected'}

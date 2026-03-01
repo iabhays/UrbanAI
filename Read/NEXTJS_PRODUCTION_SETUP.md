@@ -1,8 +1,8 @@
-# SENTIENTCITY Dashboard - Next.js 14 Production Setup
+# UrbanAI Dashboard - Next.js 14 Production Setup
 
 ## Overview
 
-The SENTIENTCITY dashboard is a **Next.js 14 application** configured for production deployment using Docker and Nginx.
+The UrbanAI dashboard is a **Next.js 14 application** configured for production deployment using Docker and Nginx.
 
 ### Key Changes Made
 
@@ -224,7 +224,7 @@ npm run dev  # Runs Next.js dev server with hot reload
 ## File Structure
 
 ```
-SENTIENTCITY/
+UrbanAI/
 ├── dashboard/
 │   ├── next.config.js (new)
 │   ├── package.json (scripts: dev, build, start)

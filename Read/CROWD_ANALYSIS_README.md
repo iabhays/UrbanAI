@@ -38,7 +38,7 @@ A comprehensive computer vision system for detecting risk in crowded environment
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd SENTIENTCITY
+cd UrbanAI
 ```
 
 ### 2. Create Virtual Environment
@@ -62,7 +62,7 @@ pip install -r requirements.txt
 
 ### Basic Usage
 ```python
-from sentient_city.perception.crowd_analysis import CrowdAnalysisSystem
+from urbanai.perception.crowd_analysis import CrowdAnalysisSystem
 
 # Initialize system
 system = CrowdAnalysisSystem()
@@ -76,7 +76,7 @@ stats = system.process_video_stream("input.mp4", "output.mp4")
 
 ### Advanced Configuration
 ```python
-from sentient_city.perception.crowd_analysis import (
+from urbanai.perception.crowd_analysis import (
     CrowdAnalysisSystem, SystemConfig, AlertConfig
 )
 
@@ -164,7 +164,7 @@ alert_config = AlertConfig(
 ### 1. Single Frame Processing
 ```python
 import cv2
-from sentient_city.perception.crowd_analysis import CrowdAnalysisSystem
+from urbanai.perception.crowd_analysis import CrowdAnalysisSystem
 
 # Initialize system
 system = CrowdAnalysisSystem(debug_mode=True)
@@ -215,7 +215,7 @@ stats = system.process_video_stream(
 
 ### 4. Custom Risk Evaluation
 ```python
-from sentient_city.perception.crowd_analysis import RiskEvaluator, RiskThresholds
+from urbanai.perception.crowd_analysis import RiskEvaluator, RiskThresholds
 
 # Custom risk thresholds
 thresholds = RiskThresholds(

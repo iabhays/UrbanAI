@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - Intelligence Engine
+UrbanAI AI - Intelligence Engine
 Plugin-based analysis orchestration and risk scoring
 """
 
@@ -13,13 +13,13 @@ from typing import Any
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-from sentientcity.core.logging import get_logger
-from sentientcity.core.service import (
+from urbanai_core.core.logging import get_logger
+from urbanai_core.core.service import (
     BaseService,
     KafkaConsumerMixin,
     KafkaProducerMixin,
 )
-from sentientcity.schemas.events import (
+from urbanai_core.schemas.events import (
     AlertEvent,
     Evidence,
     Location,
@@ -265,7 +265,7 @@ class IntelligenceEngineService(BaseService, KafkaConsumerMixin, KafkaProducerMi
 
     async def startup(self) -> None:
         """Initialize service."""
-        await self.start_consumer(["sentient.tracks"])
+        await self.start_consumer(["urbanai.tracks"])
         await self.start_producer()
         
         # Load default plugins
@@ -378,7 +378,7 @@ class IntelligenceEngineService(BaseService, KafkaConsumerMixin, KafkaProducerMi
         )
         
         await self.publish(
-            "sentient.alerts",
+            "urbanai.alerts",
             alert.model_dump_json().encode(),
             key=trigger_event.camera_id.encode(),
         )

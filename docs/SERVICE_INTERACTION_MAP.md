@@ -1,4 +1,4 @@
-# SENTIENTCITY AI - Service Interaction Map
+# UrbanAI AI - Service Interaction Map
 
 ## Service Communication Patterns
 

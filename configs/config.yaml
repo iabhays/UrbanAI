@@ -1,8 +1,8 @@
-# SENTIENTCITY AI Configuration File
+# UrbanAI AI Configuration File
 
 # System Configuration
 system:
-  name: "SENTIENTCITY AI"
+  name: "UrbanAI AI"
   version: "1.0.0"
   debug: false
   log_level: "INFO"
@@ -68,7 +68,7 @@ streaming:
       poses: "poses"
       behaviors: "behaviors"
       alerts: "alerts"
-    consumer_group: "sentient_city_group"
+    consumer_group: "urbanai_group"
     auto_offset_reset: "latest"
   
   redis:
@@ -187,7 +187,7 @@ cameras:
 # Deployment Configuration
 deployment:
   docker:
-    image_prefix: "sentientcity"
+    image_prefix: "urbanai"
     registry: ""
   
   gpu:

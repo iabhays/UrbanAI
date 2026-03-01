@@ -14,13 +14,13 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from sentient_city.utils.logger import setup_logger
-from sentient_city.utils.config import get_config
+from urbanai.utils.logger import setup_logger
+from urbanai.utils.config import get_config
 
 
 def main():
     """Main entry point."""
-    parser = argparse.ArgumentParser(description="SENTIENTCITY AI API Server")
+    parser = argparse.ArgumentParser(description="UrbanAI AI API Server")
     parser.add_argument(
         "--host",
         type=str,
@@ -69,7 +69,7 @@ def main():
     
     # Run server
     uvicorn.run(
-        "sentient_city.backend_api.fastapi_server.main:app",
+        "urbanai.backend_api.fastapi_server.main:app",
         host=host,
         port=port,
         workers=workers if not reload else 1,

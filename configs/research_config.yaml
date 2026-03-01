@@ -10,7 +10,7 @@ experiments:
   tracking:
     enabled: true
     backend: "local"  # or "wandb", "mlflow"
-    project_name: "sentientcity_research"
+    project_name: "urbanai_core_research"
   
   # Hyperparameter search
   hyperparameter_search:

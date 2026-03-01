@@ -1,8 +1,8 @@
-# SENTIENTCITY AI Deployment Guide
+# UrbanAI AI Deployment Guide
 
 ## Production Deployment Guide
 
-This guide covers deployment of SENTIENTCITY AI in production environments.
+This guide covers deployment of UrbanAI AI in production environments.
 
 ---
 
@@ -37,7 +37,7 @@ This guide covers deployment of SENTIENTCITY AI in production environments.
 
 ```bash
 git clone <repository-url>
-cd SENTIENTCITY
+cd UrbanAI
 ```
 
 ### 2. Install Dependencies
@@ -81,10 +81,10 @@ cd dashboard/react_ui && npm install && npm run dev
 
 ```bash
 # Build backend
-docker build -f deployment/docker/Dockerfile.backend -t sentientcity-backend .
+docker build -f deployment/docker/Dockerfile.backend -t urbanai_core-backend .
 
 # Build dashboard
-docker build -f deployment/docker/Dockerfile.dashboard -t sentientcity-dashboard ./dashboard
+docker build -f deployment/docker/Dockerfile.dashboard -t urbanai_core-dashboard ./dashboard
 ```
 
 ### Run with Docker Compose
@@ -123,8 +123,8 @@ pip install -r requirements.txt
 cp deployment/edge_config/edge_config.yaml configs/
 
 # Start services
-systemctl start sentientcity-pipeline
-systemctl start sentientcity-api
+systemctl start urbanai_core-pipeline
+systemctl start urbanai_core-api
 ```
 
 ### Distributed Edge Deployment
@@ -154,14 +154,14 @@ Deploy services across multiple edge nodes:
 
 **1. Create Namespace:**
 ```bash
-kubectl create namespace sentientcity
+kubectl create namespace urbanai_core
 ```
 
 **2. Deploy ConfigMap:**
 ```bash
-kubectl create configmap sentientcity-config \
+kubectl create configmap urbanai_core-config \
   --from-file=configs/config.yaml \
-  -n sentientcity
+  -n urbanai_core
 ```
 
 **3. Deploy Services:**
@@ -175,11 +175,11 @@ kubectl apply -f deployment/cloud_config/kubernetes/
 ```bash
 # Build and push images
 aws ecr get-login-password | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com
-docker tag sentientcity-backend:latest <account>.dkr.ecr.<region>.amazonaws.com/sentientcity-backend:latest
-docker push <account>.dkr.ecr.<region>.amazonaws.com/sentientcity-backend:latest
+docker tag urbanai_core-backend:latest <account>.dkr.ecr.<region>.amazonaws.com/urbanai_core-backend:latest
+docker push <account>.dkr.ecr.<region>.amazonaws.com/urbanai_core-backend:latest
 
 # Deploy using ECS task definitions
-aws ecs create-service --cluster sentientcity --service-name backend --task-definition sentientcity-backend
+aws ecs create-service --cluster urbanai_core --service-name backend --task-definition urbanai_core-backend
 ```
 
 ---
@@ -258,7 +258,7 @@ Metrics are collected via Prometheus client:
 ### Logging
 
 Logs are written to:
-- `logs/sentient_city.log`: Application logs
+- `logs/urbanai.log`: Application logs
 - `logs/audit.log`: Security audit logs
 
 ---
@@ -307,7 +307,7 @@ docker run --rm --gpus all nvidia/cuda:11.8.0-base-ubuntu22.04 nvidia-smi
 docker-compose logs kafka
 
 # Test connection
-docker exec -it sentientcity-kafka-1 kafka-topics --list --bootstrap-server localhost:9092
+docker exec -it urbanai_core-kafka-1 kafka-topics --list --bootstrap-server localhost:9092
 ```
 
 ### High Memory Usage
@@ -334,8 +334,8 @@ tar -czf models_backup.tar.gz models/
 
 ```bash
 # Backup Redis
-docker exec sentientcity-redis-1 redis-cli SAVE
-docker cp sentientcity-redis-1:/data/dump.rdb ./backup/
+docker exec urbanai_core-redis-1 redis-cli SAVE
+docker cp urbanai_core-redis-1:/data/dump.rdb ./backup/
 
 # Backup FAISS indices
 cp -r data/faiss_index.bin ./backup/
@@ -351,8 +351,8 @@ tar -xzf configs_backup.tar.gz
 tar -xzf models_backup.tar.gz
 
 # Restore Redis
-docker cp ./backup/dump.rdb sentientcity-redis-1:/data/
-docker restart sentientcity-redis-1
+docker cp ./backup/dump.rdb urbanai_core-redis-1:/data/
+docker restart urbanai_core-redis-1
 ```
 
 ---
@@ -392,13 +392,13 @@ docker restart sentientcity-redis-1
 
 ```bash
 # Register new model
-python -m sentient_city.mlops.model_registry register \
+python -m urbanai.mlops.model_registry register \
   --model-id yolov26 \
   --model-path models/yolov26_v2.pt \
   --version v2
 
 # Set as production
-python -m sentient_city.mlops.model_registry set-production \
+python -m urbanai.mlops.model_registry set-production \
   --model-id yolov26 \
   --version v2
 ```
@@ -417,7 +417,7 @@ system:
 
 ```bash
 # Clean expired data
-python -m sentient_city.memory_engine.vector_store cleanup
+python -m urbanai.memory_engine.vector_store cleanup
 ```
 
 ---
@@ -425,7 +425,7 @@ python -m sentient_city.memory_engine.vector_store cleanup
 ## Support
 
 For issues and questions:
-- Check logs: `logs/sentient_city.log`
+- Check logs: `logs/urbanai.log`
 - Review architecture: `ARCHITECTURE.md`
 - Check configuration: `configs/config.yaml`
 

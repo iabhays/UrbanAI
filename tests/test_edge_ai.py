@@ -2,7 +2,11 @@
 
 import pytest
 import numpy as np
-from sentient_city.edge_ai import EdgeDetector
+
+try:
+    from urbanai.edge_ai import EdgeDetector
+except ImportError:
+    pytest.skip("urbanai edge_ai dependencies not installed", allow_module_level=True)
 
 
 def test_detector_initialization():

@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - YOLOv26 Temporal Modules
+UrbanAI AI - YOLOv26 Temporal Modules
 Pose fusion and temporal feature buffering
 """
 

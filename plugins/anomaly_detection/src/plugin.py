@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - Anomaly Detection Plugin
+UrbanAI AI - Anomaly Detection Plugin
 Detects behavioral anomalies using statistical and ML methods
 """
 
@@ -7,7 +7,7 @@ from typing import Any
 from collections import deque
 import numpy as np
 
-from sentientcity.schemas.events import PluginResult
+from urbanai_core.schemas.events import PluginResult
 
 
 class Plugin:

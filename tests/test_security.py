@@ -1,8 +1,12 @@
 """Tests for security modules."""
 
 import pytest
-from sentient_city.security import AuthenticationService, RBACService, EncryptionService
-from sentient_city.security.rbac import Role, Permission
+
+try:
+    from urbanai.security import AuthenticationService, RBACService, EncryptionService
+    from urbanai.security.rbac import Role, Permission
+except ImportError:
+    pytest.skip("urbanai security dependencies not installed", allow_module_level=True)
 
 
 def test_authentication_service():

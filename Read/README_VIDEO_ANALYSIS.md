@@ -1,15 +1,15 @@
-# ✅ SENTIENTCITY Video Analysis - Setup Complete
+# ✅ UrbanAI Video Analysis - Setup Complete
 
 ## Summary of Changes
 
-You now have **complete demo video analysis functionality** fully integrated into your SENTIENTCITY dashboard, with **guaranteed isolation** from production camera sources.
+You now have **complete demo video analysis functionality** fully integrated into your UrbanAI dashboard, with **guaranteed isolation** from production camera sources.
 
 ---
 
 ## 📦 What Was Built
 
 ### 1. **Backend API** (Completely Isolated)
-**File:** `sentient_city/backend_api/fastapi_server/routes/videos.py`
+**File:** `urbanai/backend_api/fastapi_server/routes/videos.py`
 - Scans `datasets/raw/` for video files
 - Provides REST API for demo analysis
 - Simulates 10-second analysis
@@ -137,7 +137,7 @@ All running independently!
 ## 📊 Files Modified vs Created
 
 ### ✅ Created (New Files)
-- `sentient_city/backend_api/fastapi_server/routes/videos.py` (NEW)
+- `urbanai/backend_api/fastapi_server/routes/videos.py` (NEW)
 - `dashboard/react_ui/src/services/videoService.js` (NEW)
 - `dashboard/react_ui/src/components/VideoAnalysisPanel.jsx` (NEW)
 - `VIDEO_ANALYSIS_SETUP.md` (NEW)
@@ -145,8 +145,8 @@ All running independently!
 - `DEMO_QUICK_REFERENCE.txt` (NEW)
 
 ### ✅ Updated (Existing Files)
-- `sentient_city/backend_api/fastapi_server/main.py` (import videos router)
-- `sentient_city/backend_api/fastapi_server/routes/__init__.py` (export videos)
+- `urbanai/backend_api/fastapi_server/main.py` (import videos router)
+- `urbanai/backend_api/fastapi_server/routes/__init__.py` (export videos)
 - `dashboard/react_ui/src/components/layout/AdvancedCommandCenterLayout.tsx` (import VideoAnalysisPanel)
 - `dashboard/react_ui/src/components/navigation/CommandModulesDropdown.tsx` (add Videos option)
 
@@ -155,7 +155,7 @@ All running independently!
 ## 🎯 Architecture
 
 ```
-SENTIENTCITY
+UrbanAI
 ├── Demo Videos (Dashboard)
 │   ├── API: /api/v1/videos/*
 │   ├── State: _demo_analyzing, _demo_results
@@ -176,7 +176,7 @@ SENTIENTCITY
 ## 🔧 Configuration
 
 ### Change Demo Videos Location
-Edit `sentient_city/backend_api/fastapi_server/routes/videos.py`:
+Edit `urbanai/backend_api/fastapi_server/routes/videos.py`:
 ```python
 DEMO_VIDEOS_DIR = Path("your/custom/path")  # Change this
 ```
@@ -276,7 +276,7 @@ python scripts/run_pipeline.py --camera "rtsp://your_camera"
 
 ### Production Cameras
 - **Purpose:** Real monitoring, actual alerts
-- **Scope:** Full SENTIENTCITY pipeline
+- **Scope:** Full UrbanAI pipeline
 - **Inference:** Real YOLOv26 models
 - **Output:** Kafka events, Redis cache, alerts
 - **Impact:** Real city intelligence
@@ -400,7 +400,7 @@ docker-compose restart
 
 ## 🎉 You're All Set!
 
-Your SENTIENTCITY dashboard now has:
+Your UrbanAI dashboard now has:
 - **Demo video analysis** for testing & presentations
 - **Production camera pipeline** for real monitoring
 - **Complete isolation** between the two

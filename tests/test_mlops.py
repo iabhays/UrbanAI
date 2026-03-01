@@ -1,8 +1,12 @@
 """Tests for MLOps modules."""
 
 import pytest
-from sentient_city.mlops import ModelRegistry, ModelMonitor, MetricsCollector
-from sentient_city.mlops.model_monitor import ModelMetrics
+
+try:
+    from urbanai.mlops import ModelRegistry, ModelMonitor, MetricsCollector
+    from urbanai.mlops.model_monitor import ModelMetrics
+except ImportError:
+    pytest.skip("urbanai mlops dependencies not installed", allow_module_level=True)
 
 
 def test_model_registry():

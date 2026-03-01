@@ -1,17 +1,17 @@
-# 🚀 SENTIENTCITY Quick Start Guide
+# 🚀 UrbanAI Quick Start Guide
 
 ## Prerequisites Installed ✅
 - Docker Desktop (verified)
 - Python 3.10+ (verified)
 - Node.js npm (verified)
-- Project files in `/Users/abhijeetkumar/Desktop/SENTIENTCITY`
+- Project files in `/Users/abhijeetkumar/Desktop/UrbanAI`
 
 ---
 
-## Start SENTIENTCITY (1 Command)
+## Start UrbanAI (1 Command)
 
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 ./Start.sh
 ```
 

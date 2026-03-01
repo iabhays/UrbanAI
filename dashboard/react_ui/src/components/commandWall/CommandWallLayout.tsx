@@ -24,7 +24,7 @@ const CommandWallLayout: React.FC<CommandWallLayoutProps> = ({
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-100 overflow-hidden">
         <div className="h-16 bg-gray-900/90 backdrop-blur-md border-b border-cyan-500/20 flex items-center justify-between px-6">
-          <div className="text-cyan-400 text-lg font-mono">SENTIENTCITY AI - Standard Mode</div>
+          <div className="text-cyan-400 text-lg font-mono">UrbanAI AI - Standard Mode</div>
         </div>
         <div className="flex h-[calc(100vh-8rem)]">
           <div className="w-80 bg-gray-900/40 backdrop-blur-sm border-r border-cyan-500/20">

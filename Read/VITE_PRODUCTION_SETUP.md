@@ -1,8 +1,8 @@
-# SENTIENTCITY Dashboard - Vite React Production Setup ✅
+# UrbanAI Dashboard - Vite React Production Setup ✅
 
 ## Overview
 
-The SENTIENTCITY dashboard is a **React application using Vite** configured for production deployment using Docker and Nginx.
+The UrbanAI dashboard is a **React application using Vite** configured for production deployment using Docker and Nginx.
 
 ---
 
@@ -110,12 +110,12 @@ dashboard:
 
 ---
 
-## Running SENTIENTCITY
+## Running UrbanAI
 
 ### Start Everything
 
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 ./Start.sh
 ```
 

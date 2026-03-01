@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - Backend API Gateway
+UrbanAI AI - Backend API Gateway
 Unified API for all client applications
 """
 
@@ -15,9 +15,9 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from pydantic import BaseModel
 import jwt
 
-from sentientcity.core.logging import get_logger, setup_logging
-from sentientcity.core.settings import get_settings
-from sentientcity.schemas.events import AlertEvent, Severity
+from urbanai_core.core.logging import get_logger, setup_logging
+from urbanai_core.core.settings import get_settings
+from urbanai_core.schemas.events import AlertEvent, Severity
 
 logger = get_logger(__name__)
 settings = get_settings()
@@ -214,9 +214,9 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
 
 app = FastAPI(
-    title="SENTIENTCITY API Gateway",
+    title="UrbanAI API Gateway",
     version="0.1.0",
-    description="Unified API for SENTIENTCITY Smart City Intelligence System",
+    description="Unified API for UrbanAI Smart City Intelligence System",
     lifespan=lifespan,
 )
 

@@ -1,8 +1,8 @@
-# SENTIENTCITY AI — Project Summary
+# UrbanAI AI — Project Summary
 
 ## 🎯 Project Overview
 
-SENTIENTCITY AI is a **production-grade, enterprise-level multi-agent intelligence platform** designed for smart city operations, defense monitoring, and public safety infrastructure. The system provides real-time monitoring, analysis, and prediction capabilities with enterprise-grade security, scalability, and reliability.
+UrbanAI AI is a **production-grade, enterprise-level multi-agent intelligence platform** designed for smart city operations, defense monitoring, and public safety infrastructure. The system provides real-time monitoring, analysis, and prediction capabilities with enterprise-grade security, scalability, and reliability.
 
 ---
 
@@ -150,7 +150,7 @@ SENTIENTCITY AI is a **production-grade, enterprise-level multi-agent intelligen
 ## 📁 Project Structure
 
 ```
-sentient_city/
+urbanai/
 ├── edge_ai/
 │   ├── yolov26_research/          ✅ Modular YOLOv26
 │   ├── pose_extraction/            ✅ Pose detection
@@ -357,6 +357,6 @@ For questions, issues, or contributions:
 
 ## 🎉 Conclusion
 
-SENTIENTCITY AI is a **complete, production-ready, enterprise-grade AI platform** ready for deployment in real-world smart city and security infrastructure. The system combines cutting-edge AI research with production engineering practices to deliver a scalable, secure, and reliable intelligence platform.
+UrbanAI AI is a **complete, production-ready, enterprise-grade AI platform** ready for deployment in real-world smart city and security infrastructure. The system combines cutting-edge AI research with production engineering practices to deliver a scalable, secure, and reliable intelligence platform.
 
 **Status**: ✅ **PRODUCTION READY**

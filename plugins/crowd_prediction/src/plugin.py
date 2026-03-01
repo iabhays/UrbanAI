@@ -1,12 +1,12 @@
 """
-SENTIENTCITY AI - Crowd Prediction Plugin
+UrbanAI AI - Crowd Prediction Plugin
 Predicts crowd crush risk and flow patterns
 """
 
 from typing import Any
 import numpy as np
 
-from sentientcity.schemas.events import PluginResult
+from urbanai_core.schemas.events import PluginResult
 
 
 class Plugin:

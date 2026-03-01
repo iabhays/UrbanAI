@@ -2,7 +2,7 @@
 """
 Main pipeline runner script.
 
-Runs the SENTIENTCITY AI processing pipeline.
+Runs the UrbanAI AI processing pipeline.
 """
 
 import argparse
@@ -14,15 +14,15 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from sentient_city.pipeline import SentientCityPipeline
-from sentient_city.utils.logger import setup_logger
-from sentient_city.utils.config import get_config
+from urbanai.pipeline import UrbanAIPipeline
+from urbanai.utils.logger import setup_logger
+from urbanai.utils.config import get_config
 from loguru import logger
 
 
 async def main():
     """Main entry point."""
-    parser = argparse.ArgumentParser(description="SENTIENTCITY AI Pipeline Runner")
+    parser = argparse.ArgumentParser(description="UrbanAI AI Pipeline Runner")
     parser.add_argument(
         "--camera",
         type=str,
@@ -75,7 +75,7 @@ async def main():
     
     # Create and run pipeline
     try:
-        pipeline = SentientCityPipeline(
+        pipeline = UrbanAIPipeline(
             camera_source=camera_source,
             camera_id=camera_id
         )

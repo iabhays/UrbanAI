@@ -1,1 +1,1 @@
-"""Tests for SENTIENTCITY AI."""
+"""Tests for UrbanAI AI."""

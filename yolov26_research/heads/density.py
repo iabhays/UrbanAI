@@ -1,5 +1,5 @@
 """
-SENTIENTCITY AI - YOLOv26 Crowd Density Head
+UrbanAI AI - YOLOv26 Crowd Density Head
 Density estimation for crowd analysis
 """
 

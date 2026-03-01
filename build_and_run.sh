@@ -3,7 +3,7 @@
 set -e
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Building SentientCity Docker Images"
+echo "Building UrbanAI Docker Images"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
 # Ensure Docker is running
@@ -18,7 +18,7 @@ echo ""
 
 # Build individual services
 echo "📦 Building Dashboard..."
-docker build -f deployment/docker/Dockerfile.dashboard -t sentientcity-dashboard . --progress=plain
+docker build -f deployment/docker/Dockerfile.dashboard -t urbanai_core-dashboard . --progress=plain
 
 echo ""
 echo "✓ Dashboard build complete"

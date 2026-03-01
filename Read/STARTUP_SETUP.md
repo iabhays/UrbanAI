@@ -1,8 +1,8 @@
-# SENTIENTCITY - Startup Script Setup Complete ✓
+# UrbanAI - Startup Script Setup Complete ✓
 
 ## 📋 Summary
 
-A production-grade startup script has been created to automate the complete SENTIENTCITY deployment with a single command.
+A production-grade startup script has been created to automate the complete UrbanAI deployment with a single command.
 
 ---
 
@@ -11,7 +11,7 @@ A production-grade startup script has been created to automate the complete SENT
 ### Run the startup script:
 
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 ./Start.sh
 ```
 
@@ -28,7 +28,7 @@ That's it! The script will:
 ## 📁 Files Created/Modified
 
 ### 1. **Start.sh** (NEW)
-- **Location**: `/Users/abhijeetkumar/Desktop/SENTIENTCITY/Start.sh`
+- **Location**: `/Users/abhijeetkumar/Desktop/UrbanAI/Start.sh`
 - **Size**: 8.1 KB
 - **Purpose**: Production startup script with:
   - Docker daemon auto-detection and startup
@@ -38,7 +38,7 @@ That's it! The script will:
   - Error handling and timeout management
 
 ### 2. **deployment/docker/nginx.conf** (NEW)
-- **Location**: `/Users/abhijeetkumar/Desktop/SENTIENTCITY/deployment/docker/nginx.conf`
+- **Location**: `/Users/abhijeetkumar/Desktop/UrbanAI/deployment/docker/nginx.conf`
 - **Size**: 1.7 KB
 - **Purpose**: Nginx configuration for dashboard
   - SPA routing (all requests → index.html)

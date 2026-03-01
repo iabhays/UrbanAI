@@ -11,11 +11,11 @@ test:
 	pytest tests/ -v
 
 lint:
-	flake8 sentient_city/
-	mypy sentient_city/
+	flake8 urbanai/
+	mypy urbanai/
 
 format:
-	black sentient_city/ tests/
+	black urbanai/ tests/
 
 clean:
 	find . -type d -name __pycache__ -exec rm -r {} +
@@ -23,7 +23,7 @@ clean:
 	find . -type f -name "*.pyo" -delete
 
 run-api:
-	python -m sentient_city.backend_api.main
+	python -m urbanai.backend_api.main
 
 run-dashboard:
 	cd dashboard && npm run dev

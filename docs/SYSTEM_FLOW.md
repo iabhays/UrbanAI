@@ -1,10 +1,10 @@
-# SENTIENTCITY AI - System Flow Documentation
+# UrbanAI AI - System Flow Documentation
 
 ## End-to-End Processing Pipeline
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│                           SENTIENTCITY PROCESSING PIPELINE                    │
+│                           UrbanAI PROCESSING PIPELINE                    │
 └──────────────────────────────────────────────────────────────────────────────┘
 
     ┌─────────────┐

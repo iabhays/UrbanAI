@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sentientcity"
+name = "urbanai"
 version = "0.1.0"
-description = "Autonomous Multi-Agent Smart City Intelligence System"
+description = "UrbanAI: Autonomous Multi-Agent Smart City Intelligence System"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.11"
 authors = [
-    { name = "SENTIENTCITY Team" }
+    { name = "UrbanAI Team" }
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -91,10 +91,11 @@ edge = [
 ]
 
 [project.scripts]
-sentient = "sentientcity.cli:app"
+urbanai-pipeline = "urbanai.pipeline:main"
+urbanai-api = "urbanai.backend_api.fastapi_server.main:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["sentientcity"]
+packages = ["urbanai", "urbanai_core"]
 
 [tool.ruff]
 target-version = "py311"
@@ -130,7 +131,7 @@ plugins = ["pydantic.mypy"]
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
-addopts = "-v --cov=sentientcity --cov-report=term-missing"
+addopts = "-v --cov=urbanai_core --cov-report=term-missing"
 
 [tool.black]
 line-length = 100

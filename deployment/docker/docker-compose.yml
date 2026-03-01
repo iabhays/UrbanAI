@@ -1,6 +1,6 @@
 version: "3.9"
 
-# SENTIENTCITY AI - Docker Compose Configuration
+# UrbanAI AI - Docker Compose Configuration
 # Production-grade multi-container deployment
 
 services:
@@ -8,9 +8,9 @@ services:
   
   postgres:
     image: postgres:16-alpine
-    container_name: sentient-postgres
+    container_name: urbanai-postgres
     environment:
-      POSTGRES_DB: sentientcity
+      POSTGRES_DB: urbanai_core
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
     volumes:
@@ -24,11 +24,11 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - sentient-network
+      - urbanai-network
 
   redis:
     image: redis:7-alpine
-    container_name: sentient-redis
+    container_name: urbanai-redis
     command: redis-server --appendonly yes
     volumes:
       - redis_data:/data
@@ -40,22 +40,22 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - sentient-network
+      - urbanai-network
 
   zookeeper:
     image: confluentinc/cp-zookeeper:7.5.0
-    container_name: sentient-zookeeper
+    container_name: urbanai-zookeeper
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     volumes:
       - zookeeper_data:/var/lib/zookeeper/data
     networks:
-      - sentient-network
+      - urbanai-network
 
   kafka:
     image: confluentinc/cp-kafka:7.5.0
-    container_name: sentient-kafka
+    container_name: urbanai-kafka
     depends_on:
       - zookeeper
     ports:
@@ -76,7 +76,7 @@ services:
       timeout: 10s
       retries: 5
     networks:
-      - sentient-network
+      - urbanai-network
 
   # ============== Core Services ==============
 
@@ -86,7 +86,7 @@ services:
       dockerfile: deployment/docker/Dockerfile.service
       args:
         SERVICE_NAME: api-gateway
-    container_name: sentient-api-gateway
+    container_name: urbanai-api-gateway
     environment:
       - ENVIRONMENT=production
       - DATABASE_HOST=postgres
@@ -102,14 +102,14 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   edge-inference:
     build:
       context: ../..
       dockerfile: deployment/docker/Dockerfile.inference
-    container_name: sentient-edge-inference
+    container_name: urbanai-edge-inference
     environment:
       - ENVIRONMENT=production
       - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
@@ -129,7 +129,7 @@ services:
               count: 1
               capabilities: [gpu]
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   tracking:
@@ -138,7 +138,7 @@ services:
       dockerfile: deployment/docker/Dockerfile.service
       args:
         SERVICE_NAME: tracking
-    container_name: sentient-tracking
+    container_name: urbanai-tracking
     environment:
       - ENVIRONMENT=production
       - REDIS_HOST=redis
@@ -151,7 +151,7 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   intelligence-engine:
@@ -160,7 +160,7 @@ services:
       dockerfile: deployment/docker/Dockerfile.service
       args:
         SERVICE_NAME: intelligence-engine
-    container_name: sentient-intelligence
+    container_name: urbanai-intelligence
     environment:
       - ENVIRONMENT=production
       - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
@@ -171,7 +171,7 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   memory-service:
@@ -180,7 +180,7 @@ services:
       dockerfile: deployment/docker/Dockerfile.service
       args:
         SERVICE_NAME: memory
-    container_name: sentient-memory
+    container_name: urbanai-memory
     environment:
       - ENVIRONMENT=production
       - DATABASE_HOST=postgres
@@ -193,7 +193,7 @@ services:
       redis:
         condition: service_healthy
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   explainability:
@@ -202,7 +202,7 @@ services:
       dockerfile: deployment/docker/Dockerfile.service
       args:
         SERVICE_NAME: explainability
-    container_name: sentient-explainability
+    container_name: urbanai-explainability
     environment:
       - ENVIRONMENT=production
       - KAFKA_BOOTSTRAP_SERVERS=kafka:29092
@@ -214,7 +214,7 @@ services:
       kafka:
         condition: service_healthy
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   # ============== Dashboard ==============
@@ -223,7 +223,7 @@ services:
     build:
       context: ../../dashboard
       dockerfile: ../deployment/docker/Dockerfile.dashboard
-    container_name: sentient-dashboard
+    container_name: urbanai-dashboard
     environment:
       - NEXT_PUBLIC_API_URL=http://api-gateway:8000
     ports:
@@ -231,14 +231,14 @@ services:
     depends_on:
       - api-gateway
     networks:
-      - sentient-network
+      - urbanai-network
     restart: unless-stopped
 
   # ============== Monitoring ==============
 
   prometheus:
     image: prom/prometheus:v2.48.0
-    container_name: sentient-prometheus
+    container_name: urbanai-prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
@@ -248,11 +248,11 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
     networks:
-      - sentient-network
+      - urbanai-network
 
   grafana:
     image: grafana/grafana:10.2.0
-    container_name: sentient-grafana
+    container_name: urbanai-grafana
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
     volumes:
@@ -263,7 +263,7 @@ services:
     depends_on:
       - prometheus
     networks:
-      - sentient-network
+      - urbanai-network
 
 volumes:
   postgres_data:
@@ -275,5 +275,5 @@ volumes:
   grafana_data:
 
 networks:
-  sentient-network:
+  urbanai-network:
     driver: bridge

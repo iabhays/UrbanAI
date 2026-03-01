@@ -1,1 +1,1 @@
-"""Scripts for running SENTIENTCITY AI components."""
+"""Scripts for running UrbanAI AI components."""

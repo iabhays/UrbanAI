@@ -2,7 +2,12 @@
 
 import pytest
 import numpy as np
-from sentient_city.tracking_engine import OCSortTracker
+
+# optional import in case edge AI dependencies (torch, loguru) are missing
+try:
+    from urbanai.edge_ai.tracking_engine import OCSortTracker
+except ImportError:
+    pytest.skip("urbanai edge_ai dependencies not installed", allow_module_level=True)
 
 
 def test_tracker_initialization():

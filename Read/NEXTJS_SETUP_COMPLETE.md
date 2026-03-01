@@ -1,4 +1,4 @@
-# SENTIENTCITY Next.js 14 Production Setup - Complete ✅
+# UrbanAI Next.js 14 Production Setup - Complete ✅
 
 ## Summary of Changes
 
@@ -93,12 +93,12 @@ Port 80 is mapped to host port 3000
 
 ---
 
-## Running SENTIENTCITY
+## Running UrbanAI
 
 ### One Command Startup
 
 ```bash
-cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
+cd /Users/abhijeetkumar/Desktop/UrbanAI
 ./Start.sh
 ```
 
@@ -113,7 +113,7 @@ cd /Users/abhijeetkumar/Desktop/SENTIENTCITY
 ✓ Dashboard is ready
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✨ SENTIENTCITY is Ready
+✨ UrbanAI is Ready
 
 Dashboard URL:
   → http://localhost:3000
@@ -221,7 +221,7 @@ open http://localhost:3000
 ## File Locations Reference
 
 ```
-/Users/abhijeetkumar/Desktop/SENTIENTCITY/
+/Users/abhijeetkumar/Desktop/UrbanAI/
 ├── Start.sh ........................ Startup script (executable)
 ├── docker-compose.yml ............. Service configuration (FIXED)
 ├── dashboard/

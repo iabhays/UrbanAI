@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ################################################################################
-# SENTIENTCITY - Production Startup Script
+# UrbanAI - Production Startup Script
 #
-# This script automates the complete startup of SENTIENTCITY with:
+# This script automates the complete startup of UrbanAI with:
 # - Docker validation and automatic startup
 # - Service orchestration via docker-compose
 # - Automatic health checks
@@ -228,7 +228,7 @@ show_service_status() {
 ################################################################################
 
 main() {
-    log_section "SENTIENTCITY AI - Startup Script"
+    log_section "UrbanAI AI - Startup Script"
     log_info "Starting all services for production deployment"
     
     # Step 1: Validate Docker CLI
@@ -250,7 +250,7 @@ main() {
     show_service_status
     
     # Final summary
-    log_section "✨ SENTIENTCITY is Ready"
+    log_section "✨ UrbanAI is Ready"
     echo ""
     echo -e "${GREEN}All services have been started successfully!${NC}"
     echo ""

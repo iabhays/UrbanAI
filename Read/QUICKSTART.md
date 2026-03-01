@@ -12,7 +12,7 @@
 ### 1. Clone and Setup
 
 ```bash
-cd SENTIENTCITY
+cd UrbanAI
 pip install -r requirements.txt
 ```
 
@@ -38,7 +38,7 @@ docker-compose logs -f
 
 #### Terminal 1: Backend API
 ```bash
-python -m sentient_city.backend_api.main
+python -m urbanai.backend_api.main
 ```
 
 #### Terminal 2: Dashboard
@@ -50,7 +50,7 @@ npm run dev
 
 #### Terminal 3: Processing Pipeline
 ```bash
-python -m sentient_city.pipeline
+python -m urbanai.pipeline
 ```
 
 ## Access
@@ -66,27 +66,27 @@ python -m sentient_city.pipeline
 pytest tests/
 
 # Run with coverage
-pytest tests/ --cov=sentient_city
+pytest tests/ --cov=urbanai
 ```
 
 ## Development
 
 ```bash
 # Format code
-black sentient_city/
+black urbanai/
 
 # Lint code
-flake8 sentient_city/
+flake8 urbanai/
 
 # Type check
-mypy sentient_city/
+mypy urbanai/
 ```
 
 ## Project Structure
 
 ```
-SENTIENTCITY/
-├── sentient_city/          # Main Python package
+UrbanAI/
+├── urbanai/          # Main Python package
 │   ├── edge_ai/           # Detection models
 │   ├── tracking_engine/   # Multi-object tracking
 │   ├── pose_extraction/   # Pose analysis

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# SENTIENTCITY Setup Verification Script
+# UrbanAI Setup Verification Script
 # Ensures all configurations are correct before running Start.sh
 
 echo "╔════════════════════════════════════════════════════════════╗"
-echo "║   SENTIENTCITY Setup Verification                          ║"
+echo "║   UrbanAI Setup Verification                          ║"
 echo "╚════════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -67,7 +67,7 @@ check_command() {
 echo -e "${BLUE}[1] Checking Project Structure${NC}"
 echo "────────────────────────────────────────────────────────────"
 check_dir "$PROJECT_ROOT/dashboard/react_ui" "Dashboard Vite project exists"
-check_dir "$PROJECT_ROOT/sentient_city" "Backend Python package exists"
+check_dir "$PROJECT_ROOT/urbanai" "Backend Python package exists"
 check_dir "$PROJECT_ROOT/deployment/docker" "Docker configuration directory exists"
 check_dir "$PROJECT_ROOT/configs" "Configuration directory exists"
 echo ""

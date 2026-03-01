@@ -1,9 +1,9 @@
 #!/bin/bash
-# SENTIENTCITY AI - Development Setup Script
+# UrbanAI AI - Development Setup Script
 
 set -e
 
-echo "🏙️ SENTIENTCITY AI - Development Setup"
+echo "🏙️ UrbanAI AI - Development Setup"
 echo "========================================"
 
 # Colors
