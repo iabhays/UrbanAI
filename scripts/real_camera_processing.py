@@ -20,7 +20,7 @@ import json
 from typing import Dict, List, Optional
 import time
 from dataclasses import dataclass, asdict
-from loguru import logger
+from urbanai.logging import logger
 import argparse
 
 # Add urbanai to path

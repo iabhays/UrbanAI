@@ -10,6 +10,9 @@ import asyncio
 import sys
 from pathlib import Path
 
+# Remove any Anaconda/conda paths to prevent accidental imports
+sys.path = [p for p in sys.path if 'anaconda3' not in p.lower() and 'conda' not in p.lower()]
+
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
@@ -17,7 +20,7 @@ sys.path.insert(0, str(project_root))
 from urbanai.pipeline import UrbanAIPipeline
 from urbanai.utils.logger import setup_logger
 from urbanai.utils.config import get_config
-from loguru import logger
+from urbanai.logging import logger
 
 
 async def main():

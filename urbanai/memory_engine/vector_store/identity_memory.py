@@ -7,7 +7,7 @@ Stores and retrieves identity embeddings for re-identification.
 import numpy as np
 from typing import List, Dict, Optional
 from datetime import datetime, timedelta
-from loguru import logger
+from urbanai.logging import logger
 
 from .vector_db import VectorDatabase
 from ...utils.config import get_config

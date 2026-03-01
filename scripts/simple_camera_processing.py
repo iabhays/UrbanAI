@@ -14,7 +14,7 @@ import cv2
 import numpy as np
 import time
 from dataclasses import dataclass
-from loguru import logger
+from urbanai.logging import logger
 import argparse
 
 try:

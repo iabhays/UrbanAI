@@ -17,7 +17,7 @@ from typing import Dict, List, Optional, Tuple
 import json
 import time
 from dataclasses import dataclass
-from loguru import logger
+from urbanai.logging import logger
 
 try:
     from ultralytics import YOLO

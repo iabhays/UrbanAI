@@ -14,7 +14,7 @@ from typing import List, Optional
 from pydantic import BaseModel
 from pathlib import Path
 import asyncio
-from loguru import logger
+from urbanai.logging import logger
 import os
 
 router = APIRouter()

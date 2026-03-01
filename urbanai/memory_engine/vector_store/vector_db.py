@@ -8,7 +8,7 @@ import numpy as np
 import faiss
 from typing import List, Optional, Tuple, Dict
 from pathlib import Path
-from loguru import logger
+from urbanai.logging import logger
 
 from ...utils.config import get_config
 

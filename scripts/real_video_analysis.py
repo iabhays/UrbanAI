@@ -18,7 +18,7 @@ from typing import Dict, List, Optional
 import json
 import time
 from dataclasses import dataclass
-from loguru import logger
+from urbanai.logging import logger
 
 # Add urbanai to path
 import sys

@@ -7,7 +7,7 @@ Manages WebSocket connections for real-time updates.
 from fastapi import WebSocket
 from typing import List, Dict
 import json
-from loguru import logger
+from urbanai.logging import logger
 
 
 class WebSocketManager:

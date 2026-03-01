@@ -12,7 +12,7 @@ from typing import List, Dict, Optional, Tuple, Callable
 from dataclasses import dataclass
 from datetime import datetime
 import time
-from loguru import logger
+from urbanai.logging import logger
 
 from .person_detector import PersonDetector, Detection
 from .person_tracker import ByteTrackTracker, TrackedPerson

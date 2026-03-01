@@ -7,7 +7,7 @@ Coordinates tracking across multiple cameras with cross-camera re-identification
 import numpy as np
 from typing import Dict, List, Optional, Tuple
 from collections import defaultdict
-from loguru import logger
+from urbanai.logging import logger
 
 from urbanai.core import get_logger, get_config
 from .tracker import BaseTracker, Track

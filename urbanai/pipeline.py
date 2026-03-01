@@ -8,7 +8,7 @@ import asyncio
 import cv2
 import numpy as np
 from typing import Optional, Dict, List
-from loguru import logger
+from urbanai.logging import logger
 
 from .edge_ai.edge_inference_runner import EdgeDetector, VideoProcessor
 from .edge_ai.tracking_engine import OCSortTracker

@@ -17,6 +17,12 @@ edge_ai:
     iou_threshold: 0.45
     device: "cuda:0"  # or "cpu"
   
+  inference:
+    # use test-time augmentation (flip/scale) to improve recall
+    augment: true
+    # run in fp16 if using cuda (faster and sometimes more accurate)
+    half: true
+
   detection:
     classes: [0]  # Person class for COCO
     max_detections: 1000

@@ -8,7 +8,7 @@ from abc import ABC, abstractmethod
 from typing import List, Dict, Optional, Tuple
 import numpy as np
 from dataclasses import dataclass, field
-from loguru import logger
+from urbanai.logging import logger
 
 from urbanai.core import get_logger, get_config
 from urbanai.core.experiment_tracking import get_experiment_tracker

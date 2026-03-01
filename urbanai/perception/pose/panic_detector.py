@@ -6,7 +6,7 @@ Detects panic behavior through rapid, erratic movements.
 
 import numpy as np
 from typing import Dict, List
-from loguru import logger
+from urbanai.logging import logger
 
 from .pose_detector import PoseDetector
 

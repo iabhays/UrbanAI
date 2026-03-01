@@ -9,7 +9,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import Response
 from typing import Callable, Optional
-from loguru import logger
+from urbanai.logging import logger
 import time
 from collections import defaultdict, deque
 

@@ -6,7 +6,7 @@ Orchestrates detection, tracking, pose extraction, and behavior analysis.
 
 import numpy as np
 from typing import Dict, List, Optional, Tuple
-from loguru import logger
+from urbanai.logging import logger
 
 from urbanai.core import get_logger, get_config
 from urbanai.core.experiment_tracking import get_experiment_tracker

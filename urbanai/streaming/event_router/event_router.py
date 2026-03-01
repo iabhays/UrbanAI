@@ -5,7 +5,7 @@ Routes events from Kafka to appropriate processors.
 """
 
 from typing import Dict, Callable, List, Optional
-from loguru import logger
+from urbanai.logging import logger
 
 from ..kafka_producer.kafka_consumer import KafkaConsumer
 from .redis_cache import RedisCache

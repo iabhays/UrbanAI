@@ -7,7 +7,7 @@ with a High-Score Track.
 
 import numpy as np
 from typing import List, Dict, Optional
-from loguru import logger
+from urbanai.logging import logger
 
 from .tracker import BaseTracker, Track
 

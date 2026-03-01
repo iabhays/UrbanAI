@@ -7,8 +7,16 @@ Provides caching layer for frequently accessed data.
 import json
 from typing import Optional, Any, Dict, List
 import redis
-import aioredis
-from loguru import logger
+
+# aioredis is optional (async features); allow import failure
+try:
+    import aioredis
+    aioredis_available = True
+except ImportError:  # pragma: no cover - only in environments without aioredis
+    aioredis = None  # type: ignore
+    aioredis_available = False
+
+from urbanai.logging import logger
 
 from ...utils.config import get_config
 
@@ -64,11 +72,15 @@ class RedisCache:
             logger.error(f"Failed to initialize Redis cache: {e}")
             raise
         
-        # Initialize async Redis client
-        self._async_client: Optional[aioredis.Redis] = None
+        # Initialize async Redis client (only if aioredis installed)
+        self._async_client: Optional["aioredis.Redis"] = None
+        if not aioredis_available:
+            logger.warning("aioredis not installed; async Redis access will be disabled")
     
     async def get_async_client(self) -> aioredis.Redis:
         """Get or create async Redis client."""
+        if not aioredis_available:
+            raise RuntimeError("aioredis not available; cannot get async client")
         if self._async_client is None:
             self._async_client = await aioredis.from_url(
                 f"redis://{self.host}:{self.port}/{self.db}",
