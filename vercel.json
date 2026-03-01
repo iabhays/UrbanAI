@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "rootDirectory": "dashboard/react_ui",
+  "buildCommand": "npm run build",
+  "public": false,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "REACT_APP_API_URL": "railway ssh --project=9a1396de-7cdb-440c-b5da-1bcae34d7e45 --environment=369fc9eb-4bcb-4e36-8bd9-486cb968db35 --service=711ecd2a-64f6-443b-8de1-a64834a83d6d"
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ]
+}
