@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd dashboard/react_ui && npm run dev",
+  "buildCommand": "npm run build",
   "public": false,
   "rewrites": [
     {
