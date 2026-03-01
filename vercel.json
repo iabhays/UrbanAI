@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "rootDirectory": "/.",
   "buildCommand": "npm run build",
   "public": false,
   "rewrites": [
